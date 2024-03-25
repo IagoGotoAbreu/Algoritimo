@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 22</title>
+</head>
+<body>
+    Insira qual é a sua meta de economia:
+    <input type="number" id="input_meta"><br><br>
+    Insira quanto tem guardado:
+    <input type="number" id="input_guardado"><br><br>
+    <button onclick="result()">Analisar economia</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function result(){
+        var meta = Number(input_meta.value)
+        var guardado = Number(input_guardado.value)
+
+        if(guardado == meta){
+            div_mensagem.innerHTML = `Parabéns, meta alcançada!`
+        }
+        if(guardado > meta){
+            var acima = guardado - meta
+            div_mensagem.innerHTML = `Parabéns, meta alcançada! Meta ultrapassada em ${acima}`
+        }
+        if(guardado < meta){
+            var abaixo = meta - guardado
+            div_mensagem.innerHTML = `Força! Ainda em busca da meta! Falta ${abaixo}`
+        }
+    }
+</script>

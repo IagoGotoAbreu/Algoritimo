@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 09</title>
+</head>
+<body>
+    Última série SITCOM que você assistiu: <input type="text" id="input_serie"><br>
+    Qtd de episódios que você assistiu: <input type="number" id="input_ep"><br>
+    <button onclick="result()">Verificar nível</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function result(){
+        var serie = input_serie.value
+        var ep = input_ep.value
+        var tempo = ep * 22
+        var hora = tempo / 60
+        if(hora <= 30){
+            div_mensagem.innerHTML = `Vejo que você gosta da série ${serie}`
+        }
+        if(hora > 30){
+            div_mensagem.innerHTML = `Vejo que você gosta da série ${serie} <br> Uau, você realmente gosta dessa série!`
+        }
+    }
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+</head>
+<body>
+    
+    Nome do Guerreiro: <input type="text" id="input_nome"> <br><br>
+
+    Ki normal do Guerreiro: <input type="number" id="input_ki"> <br><br>
+
+    <button onclick="ki()">Ver ki em forma normal</button> <br><br>
+    <button onclick="ki1()">Ver ki em forma Super Sayajin </button> <br><br>
+    <button onclick="ki2()">Ver ki em forma Super Sayajin 2</button> 
+
+</body>
+</html>
+
+<script>
+
+    function ki(){
+        var nome = input_nome.value
+        var ki = input_ki.value
+
+        alert('Guerreiro ' +nome+ ' com '+ki+' de ki!')   
+    }
+
+    function ki1(){
+        var nome = input_nome.value
+        var ki = input_ki.value
+        var ki1 = ki * 50
+
+        alert('Super Sayajin ' +nome+ ' com '+ki1+' de ki!')
+    }
+
+    function ki2(){
+        var nome = input_nome.value
+        var ki = input_ki.value
+        var ki1 = ki * 50
+        var ki2 = ki * 100
+
+        alert('Super Sayajin 2 ' +nome+ ' com '+ki2+' de ki!')
+    }
+
+</script>

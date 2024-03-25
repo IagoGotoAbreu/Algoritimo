@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+</head>
+<body>
+    Votos Candidato A: <input type="number" id="input_candidato_a"><br>
+    Votos Candidato B: <input type="number" id="input_candidato_b"><br>
+    Votos Brancos: <input type="number" id="input_branco"><br>
+    Votos Nulos: <input type="number" id="input_nulo"><br>
+
+    <button onclick="result()">Resultado da Eleição</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function result(){
+
+        var A = Number(input_candidato_a.value)
+        var B = Number(input_candidato_b.value)
+        var branco = Number(input_branco.value)
+        var nulo = Number(input_nulo.value)
+
+        var tudo = A + B + branco + nulo
+        var aa = A / tudo * 100
+        var bb = B / tudo * 100
+        var invalidos = branco + nulo
+        var inva = Number(invalidos) / tudo * 100
+
+        div_mensagem.innerHTML = `Total de votos: ${tudo} <br>Candidato A: ${aa}% (${A} votos) 
+        <br>Candidato B: ${bb}% (${B} votos) <br>Inválidos: ${inva}% (${invalidos} votos)`
+
+
+    }
+
+</script>

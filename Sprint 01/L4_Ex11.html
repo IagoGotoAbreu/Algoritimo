@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11</title>
+</head>
+<body>
+    Qtd de Filhos que você tem: <input type="number" id="input_filhos"><br>
+    <button onclick="result()">Analisar família</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function result(){
+        div_mensagem.innerHTML = ``
+        var filhos = input_filhos.value
+        if(filhos >= 1){
+            div_mensagem.innerHTML += `Não tem TV<br>`
+        }
+        if(filhos >= 2){div_mensagem.innerHTML += `Não tem internet<br>`
+        }
+        if(filhos >= 3){div_mensagem.innerHTML += `Não tem video game<br>`
+        }
+        if(filhos >= 4){div_mensagem.innerHTML += `Não tem Netflix<br>`
+        }
+    }
+</script>

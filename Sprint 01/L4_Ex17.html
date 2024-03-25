@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 17</title>
+</head>
+<body>
+    Insira a qtd de chocolates comprados:
+    <input type="number" id="input_qtd"> <br><br>
+    <button onclick="result()">Compra</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    
+    function result(){
+        var qtd = Number(input_qtd.value)
+        var valor = 3
+        var valor2 = 2.5
+        var preco = qtd * valor
+        var preco2 = qtd * valor2
+
+        if(qtd <= 12){
+            div_mensagem.innerHTML = `o valor da sua compra foi de ${preco}`
+        }
+        if(qtd > 12){
+            div_mensagem.innerHTML = `o valor da sua compra foi de ${preco2}`
+        }
+}   
+</script>

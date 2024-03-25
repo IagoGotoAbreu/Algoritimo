@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    Quantas latinhas você toma por dia: <input type="number" id="input_lata">
+    <button onclick="result()">Quantos refris?</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function result(){
+
+        var lata = input_lata.value
+        var refri = lata * 365
+
+        if (refri<=500){
+            div_mensagem.innerHTML = `Você consome ${refri} latas de refri por ano`
+        }
+        if(refri > 500){
+            div_mensagem.innerHTML = `Você consome ${refri} latas de refri por ano. Cuidado com a diabetes!`
+        }
+
+    }
+
+</script>

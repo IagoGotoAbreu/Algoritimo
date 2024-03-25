@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    
+    Preço da pizza: <input type="number" id="input_preco"> <br><br>
+
+    Qtd de Amigos: <input type="number" id="input_amigos"> <br><br>
+
+    <button onclick="result()">#lovePizza</button>
+
+</body>
+</html>
+
+<script>
+
+    function result(){
+
+        var amigo = input_amigos.value
+        var resultado = input_preco.value / input_amigos.value 
+
+        alert('Cada um dos ' + amigo + ' amigos vai pagar R$' + resultado)
+    }
+
+
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 18</title>
+</head>
+<body>
+    Insira a frequência do aluno (0 a 100):
+    <input type="number" id="input_freq"> <br><br>
+    <button onclick="result()">Analisar frequência</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function result(){
+        var freq = Number(input_freq.value)
+        
+        if(freq < 50){
+            div_mensagem.innerHTML = '<img src="turista.jpg">'
+        }
+        if(freq >= 50){
+            div_mensagem.innerHTML = '<img src="Aluno.jpg">'
+        }
+}
+</script>

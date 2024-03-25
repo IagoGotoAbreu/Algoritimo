@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 20</title>
+</head>
+<body>
+    Insira a temperatura do ambiente:
+    <input type="number" id="input_temperatura"> <br><br>
+    <button onclick="result()">Verificar clima</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function result(){
+        var temp = input_temperatura.value
+        if(temp < 10){
+            div_mensagem.innerHTML = '<img src = "bom_estado.jpg">'
+        }
+        if(temp >= 10){
+            div_mensagem.innerHTML = '<img src = "estragado.jpg">'
+        }
+    }
+</script>

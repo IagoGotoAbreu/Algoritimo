@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade</title>
+</head>
+<body>
+    <h1>Medidas Antropométricas</h1>
+    <h3>Informe os dados abaixo</h3>
+    Nome Completo: <input type="text" id="input_nome"><br>
+    Peso (em quilogramas): <input type="number" id="input_kg"><br>
+    Altura (em metros): <input type="number" id="input_metros"><br>
+    <br><button onclick="result()">Calcular</button>
+</body>
+</html>
+
+<script>
+
+    function result(){
+        var nome = input_nome.value
+        var peso = input_kg.value
+        var altura = input_metros.value
+        var imc = peso / (altura * altura)
+        var pes = altura / 0.3048
+        var oncas = peso * 35.274
+        var imc2 = oncas / (pes*pes)
+
+        alert(`${nome} seu IMC é de: ${imc}  ..  A sua altura em pés é de: ${pes}  ..  O seu peso em onças é de: ${oncas}  ..  O seu IMC em onças/pés² é de: ${imc2}`)
+
+    }
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06</title>
+</head>
+<body>
+    Valor da Renda Familiar: <input type="number" id="input_renda"><br>
+    Valor da Prestação: <input type="number" id="input_prestacao"><br>
+    <button onclick="result()">Verificar financiamento</button>
+    <div id="div_mensagem"></div>
+    <style>.red-text{Color: Red}</style>
+</body>
+</html>
+<script>
+    function result(){
+        var renda = input_renda.value
+        var prestacao = input_prestacao.value
+        var xx = prestacao / renda * 100
+        
+        if(xx <= 100 * 0.3){
+            div_mensagem.innerHTML = `A prestação corresponde a ${xx}% da renda familiar`
+        }
+        if(xx > 100 * 0.3){
+            div_mensagem.innerHTML = `A prestação corresponde a ${xx}% da renda familiar <br> <span class="red-text"><b>Será necessário complementar a renda familiar<b></span>`
+        }
+    }
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 03</title>
+</head>
+<body>
+    Nome: <input type="text" id="input_nome">
+    Idade: <input type="number" id="input_idade">
+    <button onclick="ver()">Ver Nome</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+
+    function ver(){
+        var nome = input_nome.value
+        var idade = input_idade.value
+
+       // alert('Meu nome é '+ nome + " e minha idade é "+ idade)
+
+       // alert (`Meu nome é ${nome} e minha idade é ${idade}`)
+
+       div_mensagem.innerHTML += `Meu nome é ${nome}, minha idade é ${idade} <br>`
+
+    }
+</script>

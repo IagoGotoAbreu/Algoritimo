@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14</title>
+</head>
+<body>
+    Nome do passageiro: <input type="text" id="input_nome"><br>
+    Distância em km: <input type="number" id="input_km"><br>
+    Bandeira da corrida (1 a 3): <input type="number" id="input_bandeira" max="3" min="1"><br>
+    Hora da corrida: <input type="number" id="input_horas" min="0" max="23"><br>
+    <button onclick="result()">Calcular Corrida</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function result(){
+        var nome = input_nome.value
+        var bandeira = input_bandeira.value
+        var km = input_km.value
+        var horas = input_horas.value
+        var valorKm = 1.25
+        var valor = km * valorKm
+        if(bandeira == 1){
+            if(horas > 0 ){
+                if(horas < 6){
+                    var resultado = valor + valor * 0.05
+                    div_mensagem.innerHTML = `Olá ${nome} Sua corrida, será na bandeira ${bandeira}, percorrerá ${km} km e o total da corrida será de ${resultado}`
+                }
+            }
+            if(horas > 7){
+                if(horas < 12){
+                    var resultado = valor + valor * 0.1
+                    div_mensagem.innerHTML = `Olá ${nome} Sua corrida, será na bandeira ${bandeira}, percorrerá ${km} km e o total da corrida será de ${resultado}`
+                }
+            }
+            if(horas > 13){ 
+                if(horas < 23){
+                    var resultado = valor + valor * 0.15
+                    div_mensagem.innerHTML = `Olá ${nome} Sua corrida, será na bandeira ${bandeira}, percorrerá ${km} km e o total da corrida será de ${resultado}`
+                }
+            }
+        }
+        if(bandeira == 2){
+            if(horas > 0){ 
+                if(horas < 6){
+                    var resultado = valor + valor * 0.1
+                    div_mensagem.innerHTML = `Olá ${nome} Sua corrida, será na bandeira ${bandeira}, percorrerá ${km} km e o total da corrida será de ${resultado}`
+                }
+            }
+            if(horas > 7){ 
+                if(horas < 12){
+                    var resultado = valor + valor * 0.2
+                    div_mensagem.innerHTML = `Olá ${nome} Sua corrida, será na bandeira ${bandeira}, percorrerá ${km} km e o total da corrida será de ${resultado}`
+                }
+            }
+            if(horas > 13){ 
+                if(horas < 23){
+                    var resultado = valor + valor * 0.3
+                    div_mensagem.innerHTML = `Olá ${nome} Sua corrida, será na bandeira ${bandeira}, percorrerá ${km} km e o total da corrida será de ${resultado}`
+                }
+            }
+        }
+        if(bandeira == 3){
+            if(horas > 0){
+                if(horas < 6){
+                    var resultado = valor + valor * 0.15
+                    div_mensagem.innerHTML = `Olá ${nome} Sua corrida, será na bandeira ${bandeira}, percorrerá ${km} km e o total da corrida será de ${resultado}`
+                }
+            }
+            if(horas > 7){
+                if(horas < 12){
+                    var resultado = valor + valor * 0.3
+                    div_mensagem.innerHTML = `Olá ${nome} Sua corrida, será na bandeira ${bandeira}, percorrerá ${km} km e o total da corrida será de ${resultado}`
+                }
+            }
+            if(horas > 13){
+                if(horas < 23){
+                    var resultado = valor + valor * 0.45
+                    div_mensagem.innerHTML = `Olá ${nome} Sua corrida, será na bandeira ${bandeira}, percorrerá ${km} km e o total da corrida será de ${resultado}`
+                }
+            }
+        }
+    }
+</script>

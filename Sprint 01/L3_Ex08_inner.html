@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 08 com inner</title>
+</head>
+<body>
+    Valor que deseja: <input type="number" id="input_valor"> <br>
+    <button onclick="deposito()">Depositar</button>
+    <button onclick="saque()">Sacar</button>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+
+    var saldo = 0
+
+function deposito(){
+
+    var valor = Number(input_valor.value)
+
+    saldo += valor
+
+    div_mensagem.innerHTML += ` Depósito de R$${valor} efetuado! Saldo atual: R$${saldo} <br>`
+}
+
+function saque(){
+
+    var valor = Number(input_valor.value)
+
+    saldo -= valor
+
+    div_mensagem.innerHTML += `Retirada de R$${valor} efetuada! Saldo atual: R$${saldo} <br>`
+}
+
+
+
+</script>

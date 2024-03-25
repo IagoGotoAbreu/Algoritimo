@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pré Ac1</title>
+</head>
+
+<body>
+    Insira a distancia percorrida:
+    <input type="number" id="input_distancia"><br><br>
+    Insira o tempo de duração de viagem:
+    <input type="number" id="input_tempo"><br><br>
+    Insira a qtd de passageiros:
+    <input type="number" id="input_qtdPassageiros"><br><br>
+    Insira a hora de início da viagem:
+    <input type="number" id="input_hora"><br><br>
+    <button onclick="result()">Realizar Viagem</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    function result() {
+        var km = Number(input_distancia.value)
+        var tempo = Number(input_tempo.value)
+        var qtdPassageiros = Number(input_qtdPassageiros.value)
+        var hora = Number(input_hora.value)
+
+        var custoViagem = km * 0.77
+        var tempoEstimado = km * 1.8
+        var passageiroExtraPreco = (qtdPassageiros - 1) * 3
+        var gasosa = km / 12
+        var combustivelPreco = gasosa * 4
+
+        if (tempo >= tempoEstimado * 1.1) {
+            custoViagem = custoViagem * 1.07
+        }
+        if (tempo >= tempoEstimado * 0.9) {
+            custoViagem = custoViagem * 0.92  
+        }
+        if (hora <= 6){
+            custoViagem = custoViagem * 0.91  
+        }
+        if (hora > 20){
+            custoViagem = custoViagem * 1.11
+        }
+        custoViagem = custoViagem + passageiroExtraPreco
+
+        div_mensagem.innerHTML = `A viagem foi iniciada às <b>${hora} horas</b> e tinha estimativa de <b>${tempoEstimado} minutos</b> e durou <b>${tempo} minutos</b>, percorrendo <b>${km} KM</b>, com <b>${qtdPassageiros}</b> passageiros, totalizando <b>R$${custoViagem}</b> do preço da corrida. Com essa distância, foram consumidos <b>${gasosa}</b> litros de gasolina, totalizando <b>R$${combustivelPreco}</b> de consumo`
+
+    }
+</script>

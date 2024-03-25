@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Avaliativa 2</title>
+</head>
+<body>
+    Insira o valor do salário:
+    <input type="number" id="input_salario"> <br><br>
+    Insira o valor do adicional mensal:
+    <input type="number" id="input_adicional"> <br><br>
+    Insira o valor do bônus:
+    <input type="number" id="input_bonus"> <br><br>
+    <button onclick="result()">Analisar Minha Renda</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function result() {
+        var salario = Number(input_salario.value)
+        var adicional = Number(input_adicional.value)
+        var bonus = Number(input_bonus.value)
+        var salarioBruto = salario + adicional + bonus
+
+        if (salarioBruto >= 10000) {
+            var ir = salarioBruto * 0.125
+            var salarioMenosIr = salarioBruto - ir
+            var inss = salarioMenosIr * 0.1
+            var fgts = salarioMenosIr * 0.08
+            var salarioLiquido = salarioBruto - ir - inss - fgts
+
+            div_mensagem.innerHTML += `<br>ANÁLISE DA SUA RENDA <br>
+
+            Com o salário de <b>R$${salario}</b>, com adicional de <b>R$${adicional}</b> e bônus de <b>R$${bonus}</b>, você tem: <br>
+
+            Bruto: <b>R$${salarioBruto}</b> <br>
+
+            IR: <b>R$${ir}</b> <br>
+
+            INSS: <b>R$${inss}</b> <br>
+
+            FGTS: <b>R$${fgts}</b> <br>
+
+            Líquido: <b>R$${salarioLiquido}</b> <br>`
+        } else {
+            var inss = salarioBruto * 0.1
+            var fgts = salarioBruto * 0.08
+            var salarioLiquido = salarioBruto - inss - fgts
+            var ir = 0
+            div_mensagem.innerHTML += `<br>ANÁLISE DA SUA RENDA <br>
+
+            Com o salário de <b>R$${salario}</b>, com adicional de <b>R$${adicional}</b> e bônus de <b>R$${bonus}</b>, você tem: <br>
+
+            Bruto: <b>R$${salarioBruto}</b> <br>
+
+            IR: <b>R$${ir}</b> <br>
+
+            INSS: <b>R$${inss}</b> <br>
+
+            FGTS: <b>R$${fgts}</b> <br>
+
+            Líquido: <b>R$${salarioLiquido}</b> <br>`
+        }
+        if (salarioLiquido > 2500){
+            var poupar = salarioLiquido * 0.15
+            var poupanca = poupar * 12
+            div_mensagem.innerHTML += `<br>Com a renda de <b>R$${salarioLiquido}</b>, é recomendado poupar <b>R$${poupar}</b>, para que em um ano tenha poupado <b>R$${poupanca}</b>`
+        } else {
+            div_mensagem.innerHTML += `<br>Com a renda de <b>R$${salarioLiquido}</b>, é recomendado obter renda extra para realizar uma poupança.`
+        }
+    }
+</script>
