@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 03</title>
+</head>
+<body>
+    Insira sua renda individual:
+    <input type="number" id="input_individual"><br>
+    Insira sua renda familiar:
+    <input type="number" id="input_familiar"><br>
+    <button onclick="result()">Terei o benefício</button>
+    <div id="divMsg"></div>
+</body>
+</html>
+
+<script>
+    function result(){
+        var individual = Number(input_individual.value)
+        var familiar = Number(input_familiar.value)
+
+        if(individual <= 2000 || familiar <= 3000){
+            divMsg.innerHTML = `Você terá direito ao auxílio`
+        } else {
+            divMsg.innerHTML = `Sem direito ao auxílio`
+        }
+    }
+</script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 04</title>
+</head>
+<body>
+    <p>Método de pagamento</p>
+    Dinheiro, Cartão de débito, Cartão de crédito, Boleto:
+    <input type="text" id="input_modo">
+    <button onclick="result()">Analisar compra</button>
+    <div id="divMsg"></div>
+</body>
+</html>
+
+<script>
+    function result(){
+        var modo = input_modo.value
+        if(modo == "dinheiro" || modo == "débito"){
+            divMsg.innerHTML = `Você terá que pagar a vista`
+        } else {
+            divMsg.innerHTML = `Pagamento poderá ser parcelado`
+        }
+    }
+</script>

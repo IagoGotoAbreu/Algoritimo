@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11</title>
+</head>
+<body>
+    Qtd de passagens:
+    <input type="number" id="input_passagem"><br>
+    <button onclick="result()">Comprar</button>
+    <div id="divMsg"></div>
+</body>
+</html>
+
+<script>
+    function result(){
+        var passagem = Number(input_passagem.value)
+
+        if(passagem >= 8 && passagem <= 50){
+            if(passagem >= 8 && passagem <= 19){
+                passagem = passagem * 4.4 * 0.97
+            }else if (passagem >= 20 && passagem <= 49){
+                passagem = passagem * 4.4 * 0.95
+            } else {
+                passagem = passagem * 4.4 * 0.93
+            }
+            divMsg.innerHTML = `Valor total a Pagar: R$${passagem}`
+        } else {
+            alert("Quantidade inválida para o Fidelidade!")
+        }
+        
+    }
+</script>

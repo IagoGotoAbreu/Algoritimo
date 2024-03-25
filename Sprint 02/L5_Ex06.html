@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06</title>
+    <style>
+        .co{
+            background-color: black;
+            color: white;
+        }
+        .pa{
+            background-color: green;
+            color: white;
+        }
+        .sa{
+            background-color: white;
+            color: black;
+        }
+        .sao{
+            background-color: black;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    Qual time de SP você torce (São Paulo, Palmeiras, Corinthians, Santos):
+    <input type="text" id="input_time">
+    <button onclick="analisar()">Fale sobre esse time</button>
+    <div id="div_msg"></div>
+</body>
+</html>
+
+<script>
+    function analisar(){
+        var time = input_time.value
+        if(time == 'Corinthians'){
+            div_msg.innerHTML = `<span class="co">Salve o Corinthians</span>`
+        } else if (time == 'Palmeiras'){
+            div_msg.innerHTML = `<span class="pa">Salve o alviverde imponente</span>`
+        } else if (time == 'Santos'){
+            div_msg.innerHTML = `<span class="sa">Agora quem dá a bola é o Santos</span>`
+        } else if (time == 'São Paulo'){
+            div_msg.innerHTML = `<span class="sao">Salve o Tricolor paulista</span>`
+        } else {
+            div_msg.innerHTML = `Time incompatível`
+        }
+    }
+</script>

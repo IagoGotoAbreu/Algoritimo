@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores</title>
+</head>
+
+<body>
+    <!--
+        Receba uma temperatura
+        Ao clicar em "Analisar", faça:
+        -Caso a temperatura esteja entre 21 e 24, exiba:
+        "A temperatura está confortável";
+        -Caso a temperatura esteja fora deste intervalo,
+        exiba "A temperatura está desconfortável";   
+    -->
+    Insira a temperatura do ambiente:
+    <input type="nuumber" id="input_temp">
+    <button onclick="analisar()">Analisar</button>
+    <div id="divMsg"></div>
+</body>
+
+</html>
+
+<script>
+    function analisar() {
+        var temp = Number(input_temp.value)
+        if (temp >= 21 && temp <= 24) {
+            divMsg.innerHTML = `A temperatura está confortável`
+        } else {
+            divMsg.innerHTML = `A temperatura está desconfortável`
+        }
+    }
+</script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    Sua Renda:
+    <input type="number" id="input_renda"><br>
+    Renda total da familia:
+    <input type="number" id="input_total"><br>
+    <button onclick="result()">Verificar ajuda</button>
+</body>
+</html>
+<script>
+    function result(){
+        var renda = Number(input_renda.value)
+        var total = Number(input_total.value)
+        if(renda <= 1050 && total <= 2100){
+            alert("Você terá direito!")
+        } else{
+            alert("Você NÃO terá direito")
+        }
+    }
+</script>
