@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    Sua Altura (em metros):
+    <input type="number" id="input_altura"><br>
+    Cor do cabelo:
+    <select id="select_corCabelo">
+        <option value="1">preto</option>
+        <option value="2">vermelho</option>
+        <option value="3">amarelo</option>
+        <option value="4">castanho</option>
+    </select><br>
+    <button onclick="match()">Deu match?</button>
+    <div id="divMsg"></div>
+</body>
+</html>
+
+<script>
+    function match(){
+        var altura = Number(input_altura.value)
+        var cabelo = select_corCabelo.value
+
+        if((cabelo == '3' || cabelo == '4') && altura < 1.85){
+            divMsg.innerHTML = `sim`
+        } else {
+            divMsg.innerHTML = `nao`
+        }
+    }
+</script>

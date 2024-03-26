@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 03</title>
+</head>
+<body>
+    Tipo de passageiro:
+    <select id="select_passageiro">
+        <option value="1">Comun</option>
+        <option value="2">Estudante</option>
+        <option value="3">Idoso/PNE </option>
+    </select><br>
+    Tipo de bilhete:
+    <select id="select_bilhete">
+        <option value="1">Passagem única</option>
+        <option value="2">Passagem integração</option>
+    </select><br>
+    <button onclick="simular()">Simular preço</button>
+    <div id="divMsg"></div>
+</body>
+</html>
+
+<script>
+    function simular(){
+        var passageiro = select_passageiro.value
+        var bilhete = select_bilhete.value
+        var preco = 0
+
+        if(passageiro == '1' && bilhete == '1' || bilhete == '2' ){
+            divMsg.innerHTML = `Valor da passagem escolhida: R$${preco}`
+        }
+    }
+</script>
