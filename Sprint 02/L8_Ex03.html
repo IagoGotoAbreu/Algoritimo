@@ -8,7 +8,7 @@
 <body>
     Tipo de passageiro:
     <select id="select_passageiro">
-        <option value="1">Comun</option>
+        <option value="1">Comum</option>
         <option value="2">Estudante</option>
         <option value="3">Idoso/PNE </option>
     </select><br>
@@ -23,12 +23,24 @@
 </html>
 
 <script>
+    
     function simular(){
         var passageiro = select_passageiro.value
         var bilhete = select_bilhete.value
         var preco = 0
-
-        if(passageiro == '1' && bilhete == '1' || bilhete == '2' ){
+        if((bilhete == '1' || bilhete == '2') && passageiro == '3'){
+            divMsg.innerHTML = `Valor da passagem escolhida: R$${preco}`
+        } else if (passageiro == '1' && bilhete == '1'){
+            preco = (preco + 4.4)
+            divMsg.innerHTML = `Valor da passagem escolhida: R$${preco}`
+        } else if (passageiro == '1' && bilhete == '2'){
+            preco = (preco + 5.9)
+            divMsg.innerHTML = `Valor da passagem escolhida: R$${preco}`
+        } else if (passageiro == '2' && bilhete == '1'){
+            preco = (preco + 4.4) / 2
+            divMsg.innerHTML = `Valor da passagem escolhida: R$${preco}`
+        } else {
+            preco = (preco + 5.9) / 2
             divMsg.innerHTML = `Valor da passagem escolhida: R$${preco}`
         }
     }

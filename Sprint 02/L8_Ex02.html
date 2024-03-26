@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício 02</title>
+    <style>
+        .tamanho{
+            width: 500px;
+        }
+    </style>
 </head>
 <body>
     Sua Altura (em metros):
@@ -26,9 +31,9 @@
         var cabelo = select_corCabelo.value
 
         if((cabelo == '3' || cabelo == '4') && altura < 1.85){
-            divMsg.innerHTML = `sim`
+            divMsg.innerHTML = `<img class="tamanho" src="feliz.jpg">`
         } else {
-            divMsg.innerHTML = `nao`
+            divMsg.innerHTML = `<img class="tamanho" src="triste.png">` 
         }
     }
 </script>
