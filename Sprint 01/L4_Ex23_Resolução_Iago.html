@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 23</title>
+</head>
+<body>
+    Insira a hora que foi dormir:
+    <input type="number" id="input_dormir"><br><br>
+    Insira a hora que acordou:
+    <input type="number" id="input_acordar"><br><br>
+    <button onclick="calcular()">Calcular Sono</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function calcular(){
+        var dormir = Number(input_dormir.value)
+        var acordar = Number(input_acordar.value)
+        var horasDormidas = 24 - dormir + acordar
+
+        if(horasDormidas < 6){
+            div_mensagem.innerHTML = "você é um zumbi!!"
+        } else if (horasDormidas <= 8){
+            div_mensagem.innerHTML = "você tem sono controlado"
+        } else {
+            div_mensagem.innerHTML = "você não dorme, você hiberna!!"
+        }
+
+    }
+</script>
