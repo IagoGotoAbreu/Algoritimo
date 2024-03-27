@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 06</title>
+</head>
+<body>
+    Insira a nota do aluno:
+    <input type="number" id="input_nota"><br>
+    Insira a presença do aluno:
+    <input type="number" id="input_presenca"><br>
+    <button onclick="analisar()">Analisar aluno</button>
+    <div id="divMsg"></div>
+</body>
+</html>
+
+<script>
+    function analisar(){
+        var nota = Number(input_nota.value);
+        var presenca = Number(input_presenca.value);
+
+        if(nota < 0 || nota > 10){
+            alert("Onde já se viu nota <0 ou >10?!")
+        } else if (presenca < 0 || presenca > 100){
+            alert("Onde já se viu frequência <0 ou >100?!")
+        } else if (nota > 0 && nota < 6){
+            divMsg.innerHTML += "<br>Aluno ficou abaixo da média"
+        } else if (nota >= 6 && nota <= 8){
+            divMsg.innerHTML += "<br>Aluno ficou na média" 
+        } else {
+            divMsg.innerHTML += "<br>Aluno acima da média"
+        }
+        if(presenca >= 75){
+            divMsg.innerHTML += "<br>Aluno aprovado por frequência"
+        } else {
+            divMsg.innerHTML += "<br>Aluno reprovado por frequência"
+        }
+    }
+</script>
