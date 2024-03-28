@@ -6,27 +6,44 @@
     <title>Exercício 23</title>
 </head>
 <body>
-    Insira a hora que foi dormir:
-    <input type="number" id="input_dormir"><br><br>
-    Insira a hora que acordou:
-    <input type="number" id="input_acordar"><br><br>
-    <button onclick="calcular()">Calcular Sono</button>
+    <!--
+        Enunciado do Eder...
+
+        Solicite o salário da pessoa
+
+        Solicite a conta de água, energia e aluguel
+
+        Após clicar no botão "Analisar situação", calcule quanto irá sobrar de dinheiro no final do mês.
+
+        Se sobrar menos que 50% do salário, exibir abaixo do botão a frase "Melhor apostar tudo no tigrinho!!"
+
+        Se sobrar 50% ou mais do salário, exibir "parabéns, vc ja pode morar em Alphaville!"
+    -->
+    Insira o seu salário:
+    <input type="number" id="input_salario"><br><br>
+    Insira o preço da conta de energia:
+    <input type="number" id="input_energia"><br><br>
+    Insira o o preço da conta de água:
+    <input type="number" id="input_agua"><br><br>
+    Insira o preço do aluguel:
+    <input type="number" id="input_aluguel"><br><br>
+    <button onclick="analisar()">Analisar Situação</button>
     <div id="div_mensagem"></div>
 </body>
 </html>
 
 <script>
-    function calcular(){
-        var dormir = Number(input_dormir.value)
-        var acordar = Number(input_acordar.value)
-        var horasDormidas = 24 - dormir + acordar
+    function analisar(){
+        var salario = Number(input_salario.value)
+        var energia = Number(input_energia.value)
+        var agua = Number(input_agua.value)
+        var aluguel = Number(input_aluguel.value)
 
-        if(horasDormidas < 6){
-            div_mensagem.innerHTML = "você é um zumbi!!"
-        } else if (horasDormidas <= 8){
-            div_mensagem.innerHTML = "você tem sono controlado"
+        var sobrar = salario - energia - agua - aluguel
+        if(sobrar < (salario / 2)){
+            div_mensagem.innerHTML = "Melhor apostar tudo no tigrinho!!"
         } else {
-            div_mensagem.innerHTML = "você não dorme, você hiberna!!"
+            div_mensagem.innerHTML = "parabéns, vc ja pode morar em Alphaville!"
         }
 
     }
