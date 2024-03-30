@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    nota 1: <input type="text" id="ipt_nota1"><br>
+    nota 2: <input type="text" id="ipt_nota2"><br>
+    <button onclick="verificar()">Verificar situação</button>
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function verificar(){
+        var nota1 = Number(ipt_nota1.value);
+        var nota2 = Number(ipt_nota2.value);
+
+        var peso1 = nota1 * 2;
+        var peso2 = nota2 * 5;
+        var media = (peso1 + peso2) / 7;
+
+        if(media >= 6 ){
+            div_mensagem.innerHTML = `Parabéns, sua média ponderada é ${media} e você foi aprovado!`;
+        } else {
+            div_mensagem.innerHTML = `Tente outra vez... Sua média ponderada foi ${media}`;
+            
+        }
+    }
+</script>
