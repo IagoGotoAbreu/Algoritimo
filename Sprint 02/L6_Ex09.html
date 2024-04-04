@@ -26,7 +26,7 @@
         var nome = input_nome.value
         var altura = Number(input_altura.value)
         if(inicial > 1 && final > inicial){
-            if(altura > inicial && altura < final){
+            if(altura >= inicial && altura <= final){
                 divMsg.innerHTML += `O candidato ${nome}, com altura de ${altura} metros, participará do processo de seleção de piloto<br>`
             } else {
                 divMsg.innerHTML += `Infelizmente, o candidato ${nome}, com altura de ${altura} metros, não atende os requisitos da seleção<br>`
