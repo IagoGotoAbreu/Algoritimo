@@ -7,19 +7,21 @@
 </head>
 <body>
     <h1>Banco Melete</h1>
-    Login:
-    <input type="text" id="input_login"><br><br>
-    Senha:
-    <input type="password" id="input_senha"><br><br>
-    Escolha a pergunta pessoal:
-    <select id="#">
-        <option value="#">Ano de Nascimento</option>
-        <option value="#">Nome do animal de estimação</option>
-    </select><br>
-    Sua resposta:
-    <input type="text" id="input_pessoal"><br><br>
-    <button onclick="verificar()">Autenticar</button>
-    <div id="divMsg"></div>
+    <div id="div_bloqueio">
+        Login:
+        <input type="text" id="input_login"><br><br>
+        Senha:
+        <input type="password" id="input_senha"><br><br>
+        Escolha a pergunta pessoal:
+        <select id="#">
+            <option value="#">Ano de Nascimento</option>
+            <option value="#">Nome do animal de estimação</option>
+        </select><br>
+        Sua resposta:
+        <input type="text" id="input_codigo"><br><br>
+        <button onclick="verificar()">Autenticar</button>
+        <div id="divMsg"></div>
+    </div>
 </body>
 </html>
 
@@ -30,17 +32,17 @@
     function verificar(){
         var login = input_login.value
         var senha = input_senha.value
-        var senhaPessoal = input_pessoal.value
+        var codigo = input_codigo.value
 
-        
-        if(tentativas >= 1 && login == 'ana' && senha == 'braga' && (senhaPessoal == '1949' || senhaPessoal == 'louro josé')){
-            divMsg.innerHTML = `Usuário autenticado`
+        tentativas--;
+
+        if (tentativas > 0 && login == "ana" && senha == "braga" && (codigo == "1949" || codigo == "louro josé")) {
+            divMsg.innerHTML = "Usuário autenticado";
             tentativas = 3;
-        } else if (tentativas > 1) {
-            tentativas--;
-            divMsg.innerHTML = `Falha na autenticação! Você ainda tem ${tentativas} tentativa(s)`
+        } else if (tentativas > 0) {
+            divMsg.innerHTML = `Falha na autenticação! Você ainda tem ${tentativas} tentativa(s)`;
         } else {
-            divMsg.innerHTML = `Falha na autenticação! Você ainda tem ${tentativas} tentativa(s) <br> Usuário BLOQUEADO! Procure seu gerente! `
+            div_bloqueio.innerHTML = `Falha na autenticação! Você ainda tem ${tentativas} tentativa(s)! Usuário bloqueado`;
         }
     }
 </script>

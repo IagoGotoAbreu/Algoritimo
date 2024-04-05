@@ -21,9 +21,9 @@
         var presenca = Number(input_presenca.value);
 
         if(nota < 0 || nota > 10){
-            alert("Onde já se viu nota <0 ou >10?!")
+            alert(`${divMsg.innerHTML = ``} Onde já se viu nota <0 ou >10?!`)
         } else if (presenca < 0 || presenca > 100){
-            alert("Onde já se viu frequência <0 ou >100?!")
+            alert(`${divMsg.innerHTML = ``} Onde já se viu frequência <0 ou >100?!`)
         } else if (nota > 0 && nota < 6){
             divMsg.innerHTML += "<br>Aluno ficou abaixo da média"
         } else if (nota >= 6 && nota <= 8){
