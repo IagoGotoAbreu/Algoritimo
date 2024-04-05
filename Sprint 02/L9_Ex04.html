@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercício 01</title>
+    <title>Exercício 04</title>
 </head>
 <body>
-    <button onclick="contar()">Contar</button>
+    <button onclick="pares()">S2 Pares</button>
     <div id="divMsg"></div>
 </body>
 </html>
 <script>
-    function contar(){
+    var contador = 0;
+    function pares(){
         divMsg.innerHTML = ``
-    
-        for(var contador = 1; contador <= 15; contador ++ ){
+        for( ; contador <= 100; contador += 2 ){
             divMsg.innerHTML += `${contador}<br>`
         }
+        
     }
 </script>
