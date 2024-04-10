@@ -31,7 +31,7 @@
         <select id="select_operacao">
             <option value="">Selecione a Operação</option>
             <option value="emprestimo">Empréstimo</option>
-            <option value="insvestimento">Investimento</option>
+            <option value="investimento">Investimento</option>
         </select>
         <select id="select_prazo">
             <option value="">Selecione o Prazo</option>
@@ -41,9 +41,9 @@
         </select>
         <br>
         <br>
-        <button onclick="result()">Mostrar o Resultado</button>
-        <button onclick="mostrarTela02()">Voltar a Simulação</button>
-        <div id="divMsg"></div>
+        <button onclick="result()" id="button_result">Mostrar o Resultado</button>
+        <button onclick="limpar()">Voltar a Simulação</button>
+        <div id="div_mensagem"></div>
     </div> 
 </body>
 </html>
@@ -53,7 +53,7 @@
         var digito = Number(input_digito.value)
         var senha = input_senha.value
 
-        if (conta !== 0 || digito == conta % 10) {
+        if (conta !== 0 && digito == conta % 10) {
             if(digito >= 0 && digito <= 3){
                 if(senha == "manaus"){
                     mostrarTela02()
@@ -85,50 +85,43 @@
             menu02.style.display = "block"
         }
     }
+
+    function limpar(){
+            div_mensagem.innerHTML = ""
+        }
     
     function result(){
         var valor = Number(input_valor.value)
-        var prazo = select_prazo.value
-        var operacao = select_operacao.value
+        var prazo = (select_prazo.value)
+        var operacao = (select_operacao.value)
+        var cont = Number(button_result.value++)
+        
+        var emprestimoCurto = valor * 0.24
+        var emprestimoMedio = valor * 0.16
+        var emprestimoLongo = valor * 0.1
+        var investimentoCurto = valor * 1.05
+        var investimentoMedio = valor * 1.08
+        var investimentoLongo = valor * 1.12
 
-        /*if(prazo != "longo"){
+        if(operacao == "emprestimo" && prazo == 'curto'){
             alert("Esta operação está condicionada ao seu perfil")
-        }*/
-        if(prazo == "curto" && operacao == "emprestimo"){
-    
-            var juros = valor * 0.24
-    
-            divMsg.innerHTML += `Simulação XX  Para o empréstimo de R${valor} no ${prazo} prazo será cobrado os juros de R${juros}ao ano`
+            div_mensagem.innerHTML += `Simulação ${cont} - Para o empréstimo de R$ ${valor} no ${prazo} prazo será cobrado os juros de R$ ${emprestimoCurto} ao ano<br>`
+        } else if (operacao == "emprestimo" && prazo == 'medio'){
+            alert("Esta operação está condicionada ao seu perfil")
+            div_mensagem.innerHTML += `Simulação ${cont} - Para o empréstimo de R$ ${valor} no ${prazo} prazo será cobrado os juros de R$ ${emprestimoMedio} ao ano<br>`
+        } else if (operacao == "emprestimo" && prazo == "longo"){
+            div_mensagem.innerHTML += `Simulação ${cont} - Para o empréstimo de R$ ${valor} no ${prazo} prazo será cobrado os juros de R$ ${emprestimoLongo} ao ano<br>`
         }
-        if(prazo == "medio" && operacao == "emprestimo"){
 
-            var juros = valor * 0.16
-
-            divMsg.innerHTML += `Simulação XX  Para o empréstimo de R$${valor} no ${prazo} prazo será cobrado os juros de R$${juros}ao ano`
+        if(operacao == "investimento" && prazo == 'curto'){
+            alert("Esta operação está condicionada ao seu perfil")
+            div_mensagem.innerHTML += `Simulação ${cont} - Investindo R$ ${valor} no ${prazo} prazo o seu rendimento será de R$ ${investimentoCurto} ao ano<br>`
+        } else if (operacao == "investimento" && prazo == 'medio'){
+            alert("Esta operação está condicionada ao seu perfil")
+            div_mensagem.innerHTML += `Simulação ${cont} - Investindo R$ ${valor} no ${prazo} prazo o seu rendimento será de R$ ${investimentoMedio} ao ano<br>`
+        } else if(operacao == "investimento" && prazo == "longo"){
+            div_mensagem.innerHTML += `Simulação ${cont} - Investindo R$ ${valor} no ${prazo} prazo o seu rendimento será de R$ ${investimentoLongo} ao ano<br>`
         }
-        if(prazo == "longo" && operacao == "emprestimo"){
-
-            var juros = valor * 0.10
-
-            divMsg.innerHTML += `Simulação XX  Para o empréstimo de R$${valor} no ${prazo} prazo será cobrado os juros de R$${juros}ao ano`
-        }
-        if(prazo == "curto" && operacao == "investimento"){
-
-            var investimento = valor - valor * 0.05
-
-            divMsg.innerHTML += `Simulação XX  Investindo R$${valor} no ${prazo} prazo o seu rendimento será de R$${investimento} ao ano`
-        }
-        if(prazo == "medio" && operacao == "investimento"){
-
-            var investimento = valor - valor * 0.08
-
-            divMsg.innerHTML += `Simulação XX  Investindo R$${valor} no ${prazo} prazo o seu rendimento será de R$${investimento} ao ano`
-        }
-        if(prazo == "longo" && operacao == "investimento"){
-
-            var investimento = valor - valor * 0.12
-
-            divMsg.innerHTML += `Simulação XX  Investindo R$${valor} no ${prazo} prazo o seu rendimento será de R$${investimento} ao ano`
-        }
+        
 }
 </script>
