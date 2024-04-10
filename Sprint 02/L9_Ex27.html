@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 17</title>
+</head>
+<body>
+    Insira a quantidade de elefantes:
+    <input type="number" id="input_qtd">
+    <br>
+    <br>
+    <button onclick="atazanar()">Atazanar a médium</button>
+    <div id="divMsg"></div>
+</body>
+</html>
+
+<script>
+    function atazanar(){
+        
+        divMsg.innerHTML = ""
+
+        var qtd = Number(input_qtd.value);
+        var elefante = "";
+
+        for(var cont = 2; cont <= qtd; cont ++){
+
+            elefante += "1 elefante incomoda muita gente!<br>";
+
+            if(cont > 1){
+
+                elefante += cont + " elefantes";
+
+                for (var cont2 = 0; cont2 < cont; cont2++){
+
+                    elefante += ", incomodam";
+
+                }
+
+                elefante += " , muito mais!<br>"
+
+            }
+        }
+        divMsg.innerHTML = elefante
+    }
+</script>
