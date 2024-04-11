@@ -13,7 +13,7 @@
         <br>
         <input type="number" id="input_conta" placeholder="Conta">
         <input type="number" id="input_digito" placeholder="Dígito">
-        <input type="text" id="input_senha" placeholder="Senha">
+        <input type="password" id="input_senha" placeholder="Senha">
         <br>
         <br>
         <button onclick="simular()">Simular</button>
@@ -80,15 +80,10 @@
         }
 
         function mostrarTela02(){
-            alert("Acesso permitido")
             menu01.style.display = "none"
             menu02.style.display = "block"
         }
     }
-
-    function limpar(){
-            div_mensagem.innerHTML = ""
-        }
     
     function result(){
         var valor = Number(input_valor.value)
@@ -105,23 +100,32 @@
 
         if(operacao == "emprestimo" && prazo == 'curto'){
             alert("Esta operação está condicionada ao seu perfil")
-            div_mensagem.innerHTML += `Simulação ${cont} - Para o empréstimo de R$ ${valor} no ${prazo} prazo será cobrado os juros de R$ ${emprestimoCurto} ao ano<br>`
+            div_mensagem.innerHTML += `Simulação ${cont+1} - Para o empréstimo de R$ ${valor} no ${prazo} prazo será cobrado os juros de R$ ${emprestimoCurto} ao ano<br>`
         } else if (operacao == "emprestimo" && prazo == 'medio'){
             alert("Esta operação está condicionada ao seu perfil")
-            div_mensagem.innerHTML += `Simulação ${cont} - Para o empréstimo de R$ ${valor} no ${prazo} prazo será cobrado os juros de R$ ${emprestimoMedio} ao ano<br>`
+            div_mensagem.innerHTML += `Simulação ${cont+1} - Para o empréstimo de R$ ${valor} no ${prazo} prazo será cobrado os juros de R$ ${emprestimoMedio} ao ano<br>`
         } else if (operacao == "emprestimo" && prazo == "longo"){
-            div_mensagem.innerHTML += `Simulação ${cont} - Para o empréstimo de R$ ${valor} no ${prazo} prazo será cobrado os juros de R$ ${emprestimoLongo} ao ano<br>`
+            div_mensagem.innerHTML += `Simulação ${cont+1} - Para o empréstimo de R$ ${valor} no ${prazo} prazo será cobrado os juros de R$ ${emprestimoLongo} ao ano<br>`
         }
 
         if(operacao == "investimento" && prazo == 'curto'){
             alert("Esta operação está condicionada ao seu perfil")
-            div_mensagem.innerHTML += `Simulação ${cont} - Investindo R$ ${valor} no ${prazo} prazo o seu rendimento será de R$ ${investimentoCurto} ao ano<br>`
+            div_mensagem.innerHTML += `Simulação ${cont+1} - Investindo R$ ${valor} no ${prazo} prazo o seu rendimento será de R$ ${investimentoCurto} ao ano<br>`
         } else if (operacao == "investimento" && prazo == 'medio'){
             alert("Esta operação está condicionada ao seu perfil")
-            div_mensagem.innerHTML += `Simulação ${cont} - Investindo R$ ${valor} no ${prazo} prazo o seu rendimento será de R$ ${investimentoMedio} ao ano<br>`
+            div_mensagem.innerHTML += `Simulação ${cont+1} - Investindo R$ ${valor} no ${prazo} prazo o seu rendimento será de R$ ${investimentoMedio} ao ano<br>`
         } else if(operacao == "investimento" && prazo == "longo"){
-            div_mensagem.innerHTML += `Simulação ${cont} - Investindo R$ ${valor} no ${prazo} prazo o seu rendimento será de R$ ${investimentoLongo} ao ano<br>`
+            div_mensagem.innerHTML += `Simulação ${cont+1} - Investindo R$ ${valor} no ${prazo} prazo o seu rendimento será de R$ ${investimentoLongo} ao ano<br>`
         }
+
         
-}
+    }
+
+    function limpar(){
+        div_mensagem.innerHTML = ""
+        input_valor.value = ``
+        button_result.value = 0
+        select_prazo.value = ""
+        select_operacao.value = ""
+    }
 </script>
