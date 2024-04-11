@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+</head>
+<body>
+    Insira o 1 número:
+    <input type="number" id="input_n1">
+    <br>
+    Insira o 2 número:
+    <input type="number" id="input_n2">
+    <br>
+    <button onclick="calcular()">S2 Pares</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function calcular(){
+        div_mensagem.innerHTML += ``
+        var n1 = Number(input_n1.value);
+        var n2 = Number(input_n2.value);
+
+        if(n1 < n2){
+            for(var cont = n1; cont <= n2; cont++){
+                var resto = cont % 2
+                if(resto == 0){
+                    div_mensagem.innerHTML += `${cont}<br>`
+                }
+            }
+        } else {
+            alert("O primeiro número tem que ser menor que o Segundo")
+        }
+    }
+</script>

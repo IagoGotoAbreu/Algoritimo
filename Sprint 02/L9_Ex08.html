@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 08</title>
+</head>
+<body>
+    Insira um número de 0 a 200:
+    <input type="number" id="input_numero">
+    <br>
+    <button onclick="viva()">Viva o 7!</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function viva(){
+        div_mensagem.innerHTML = ""
+        var numero = Number(input_numero.value);
+
+        if(numero >= 0 && numero <= 200){
+            for(var cont = 0; cont <= numero; cont++){
+                var resto = cont % 7
+                if(resto == 0){
+                    div_mensagem.innerHTML += `${cont}<br>`
+                }
+            }
+        } else {
+        alert("Insira um número válido!")
+        }
+    }
+</script>
