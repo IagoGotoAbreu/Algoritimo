@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14</title>
+</head>
+<body>
+    Insira sua idade:
+    <input type="number" id="input_idade" oninput="crescer()">
+
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function crescer(){
+        var idade = Number(input_idade.value);
+        var texto = ""
+
+            for(var cont = 0; cont <= idade; cont++){
+                div_mensagem.innerHTML += `${cont} anos ${texto}`
+            }
+    }
+</script>

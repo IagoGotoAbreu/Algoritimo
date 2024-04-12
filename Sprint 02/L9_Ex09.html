@@ -20,10 +20,14 @@
 <script>
     function papagaio(){
         var numero = Number(input_numero.value);
-        var texto = input_texto.value
+        var frase = input_texto.value
+        var texto = ""
 
         for(var cont = 1; cont <= numero; cont++){
-            alert(texto)
+            texto += frase
+        }
+        for(var cont = 1; cont <= numero; cont++){
+            alert(`${texto}`)
         }
     }
 </script>
