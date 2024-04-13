@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 16</title>
+</head>
+
+<body>
+    Insira a qtd de pessoas que o carro suporta:
+    <input type="number" id="input_limite"><br>
+    Insira a qtd de pessoas que vão entrar no carro:
+    <input type="number" id="input_qtd"><br>
+    <button onclick="carona()">#Partiu Carona</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function carona() {
+        div_mensagem.innerHTML = ""
+        var qtd = Number(input_qtd.value);
+        var limite = Number(input_limite.value);
+        
+        div_mensagem.innerHTML += `Entrou o 1º passageiro (que é o(a) motorista)<br>`
+        for(var cont = 2; cont <= qtd; cont++){
+            if(cont <= limite){
+                div_mensagem.innerHTML += `Entrou o ${cont}º passageiro<br>`
+            } else {
+                div_mensagem.innerHTML += `O ${cont}º passageiro terá que esperar!<br>`
+            }
+        }
+    }
+</script>
