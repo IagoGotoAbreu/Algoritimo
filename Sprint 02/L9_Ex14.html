@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício 14</title>
 </head>
+
 <body>
     Insira sua idade:
     <input type="number" id="input_idade" oninput="crescer()">
 
     <div id="div_mensagem"></div>
 </body>
+
 </html>
 <script>
-    function crescer(){
+    function crescer() {
         var idade = Number(input_idade.value);
-        var texto = ""
+        div_mensagem.innerHTML = ""
 
-            for(var cont = 0; cont <= idade; cont++){
-                div_mensagem.innerHTML += `${cont} anos ${texto}`
+        for (var cont = 0; cont <= idade; cont++) {
+            var texto;
+            if (cont >= 0 && cont <= 4) {
+                texto = "(Primeira Infância)"
+            } else if (cont > 4 && cont <= 6) {
+                texto = "(Pré-escolar)"
+            } else if (cont > 6 && cont <= 10) {
+                texto = "(Segunda Infância)"
+            } else if (cont > 10 && cont <= 18) {
+                texto = "(Adolescência)"
+            } else if (cont > 18 && cont <= 50) {
+                texto = "(Adulto)"
+            } else if (cont > 50 && cont <= 100) {
+                texto = "(Melhor idade)"
+            } else {
+                texto = "(Matusalém)"
             }
+            div_mensagem.innerHTML += `${cont} anos ${texto}<br>`
+        }
     }
 </script>
