@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliativa 02</title>
+</head>
+<body>
+    Episódio que deseja começar assistindo:
+    <input type="number" id="input_ep">
+    <br>
+    Quantidade de tempo disponível:
+    <input type="number" id="input_tempo">
+    <br>
+    Unidade de tempo em:
+    <select id="select_tempo">
+        <option value="">Selecione uma opção</option>
+        <option value="horas">Horas</option>
+        <option value="minutos">Minutos</option>
+    </select>
+    <br>
+    Pular abertura?
+    <select id="select_abertura">
+        <option value="">Selecione uma opção</option>
+        <option value="sim">sim</option>
+        <option value="nao">não</option>
+    </select>
+    <br>
+    Pular encerramento?
+    <select id="select_encerramento">
+        <option value="">Selecione uma opção</option>
+        <option value="sim">sim</option>
+        <option value="nao">não</option>
+    </select>
+    <br>
+    <button onclick="assistir()">Assistir Episódios</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function assistir(){
+        var ep = Number(input_ep.value);
+        var tempo = Number(input_tempo.value);
+        var tipoTempo = (select_tempo.value);
+        var abertura = (select_abertura.value);
+        var encerramento = (select_encerramento.value);
+
+        if(ep >= 1 && ep <= 1100){
+
+        } else {
+            alert("O número do episódio é inválido");
+        }
+
+    }
+</script>
