@@ -19,9 +19,11 @@
     function ver() {
         div_mensagem.innerHTML = ""
         var xicara = Number(input_xicara.value);
+        var urlCafe = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvTFgmfrOkByzBdcayQZ8q73BaC04uxgUL0R1FKVPbIUenOCwxBkOtNRiT2f7FYusbZaM&usqp=CAU";
+        var urlLeite = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwXQMz9CWBfbBGY2QbCfsp0FuNUUSQ8Kss8voTo5dwpQ&s";
 
         for(var cont = 1; cont <= xicara; cont++){
-            div_mensagem.innerHTML += `${cont} colheres com leite em pó e ${cont*2} colheres de café em pó<br>`
+            div_mensagem.innerHTML += `<img src="${urlCafe}"> <img src="${urlCafe}"> <img src="${urlLeite}"><br>`
         }
 
         
