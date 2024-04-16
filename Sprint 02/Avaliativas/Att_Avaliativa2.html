@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avaliativa 02</title>
 </head>
+
 <body>
     Episódio que deseja começar assistindo:
     <input type="number" id="input_ep">
@@ -36,18 +38,39 @@
     <button onclick="assistir()">Assistir Episódios</button>
     <div id="div_mensagem"></div>
 </body>
+
 </html>
 
 <script>
-    function assistir(){
+    function assistir() {
         var ep = Number(input_ep.value);
         var tempo = Number(input_tempo.value);
         var tipoTempo = (select_tempo.value);
         var abertura = (select_abertura.value);
         var encerramento = (select_encerramento.value);
+        var tempoEp;
+        var assistirEp;
 
-        if(ep >= 1 && ep <= 1100){
+        if (tipoTempo == 'horas') {
+            tempo = tempo * 60
+        }
 
+        if (abertura == 'nao' && encerramento == 'nao') {
+            tempoEp = 20;
+            assistirEp = tempo / tempoEp;
+        } else if (abertura == 'nao' && encerramento == 'sim') {
+            tempoEp = 22;
+            assistirEp = tempo / tempoEp;
+        } else if (abertura == 'sim' && encerramento == 'nao') {
+            tempoEp = 22;
+            assistirEp = tempo / tempoEp;
+        } else {
+            tempoEp = 24;
+            assistirEp = tempo / tempoEp;
+        }
+
+        if (ep >= 1 && ep <= 1100) {
+            
         } else {
             alert("O número do episódio é inválido");
         }
