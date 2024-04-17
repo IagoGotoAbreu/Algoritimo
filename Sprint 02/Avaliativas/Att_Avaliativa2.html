@@ -56,17 +56,13 @@
         }
 
         if (abertura == 'nao' && encerramento == 'nao') {
-            tempoEp = 20;
-            assistirEp = tempo / tempoEp;
+            tempoEp = 24;
         } else if (abertura == 'nao' && encerramento == 'sim') {
             tempoEp = 22;
-            assistirEp = tempo / tempoEp;
         } else if (abertura == 'sim' && encerramento == 'nao') {
             tempoEp = 22;
-            assistirEp = tempo / tempoEp;
         } else {
-            tempoEp = 24;
-            assistirEp = tempo / tempoEp;
+            tempoEp = 20;
         }
 
         if (ep >= 1 && ep <= 1100) {
