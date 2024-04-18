@@ -65,11 +65,11 @@
             tempoEp = 20;
         }
 
-        var epAssistidos = tempoDisponivel / tempoEp;
+        var epAssistidos = tempoDisponivel;
 
         if (ep >= 1 && ep <= 1100) {
             for (var contadorEp = ep; tempoDisponivel > 0 && contadorEp <= 1100; contadorEp++){
-                mensagem += `Episódio: ${contadorEp}<br>`;
+                mensagem += `<br>Episódio: ${contadorEp}<br>`;
                 for (var contadorMin = 1; contadorMin <= tempoEp && tempoDisponivel > 0; contadorMin++){
                     if (abertura == 'nao' && contadorMin <= 2){
                         mensagem += `Minuto ${contadorMin}: Assistindo Abertura<br>`;
@@ -80,9 +80,23 @@
                     }
                     tempoDisponivel--;
                 }
+
                 mensagem += "<br>"
+                
+                if (contadorEp == 1100){
+                    mensagem += '<span style="color: blue;">Você chegou ao fim do anime!</span><br><br>'
+                }
             }
-            mensagem += `Fim dos episódios!<br>Foram assistidos: ${epAssistidos} episódios`
+
+            epAssistidos = (epAssistidos-tempoDisponivel) / tempoEp;
+                
+            if(epAssistidos == 1){
+                var singularPluralEp = "episódio"
+            } else {
+                singularPluralEp = "episódios"
+            }
+
+            mensagem += `Fim dos episódios!<br>Foram assistidos: ${epAssistidos} ${singularPluralEp}.<br>`
             div_mensagem.innerHTML = mensagem;
 
         } else {
