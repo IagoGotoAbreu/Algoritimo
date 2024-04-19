@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="gerar()">Gerar Aleatório</button><br>
+    <button onclick="gerarNovo()">Gerar Aleatório 0 a 10</button><br>
+    <button onclick="gerar5a20()">Gerar Aleatório 5 a 20</button><br>
+    <button onclick="gerar24a49()">Gerar Aleatório 24 a 49</button><br>
+    <button onclick="gerar50a50()">Gerar Aleatório -50 a 50</button><br>
+    <button onclick="sortear3()">Sortear o 3</button><br>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    function gerar(){
+        var aleatorio = Math.random();
+        div_mensagem.innerHTML = `Sorteado ${aleatorio}`;
+    }
+    function gerarNovo(){
+        var aleatorio = Math.random() * 10;
+        div_mensagem.innerHTML = `Sorteado ${aleatorio}`;
+    }
+    function gerar5a20(){
+        var aleatorio = Math.random() * 15 + 5;
+        div_mensagem.innerHTML = `Sorteado ${aleatorio}`;
+    }
+    function gerar24a49(){
+        var min = 24
+        var max = 49
+        var intervalo = max - min
+        var aleatorio = Math.random() * intervalo + min;
+        div_mensagem.innerHTML = `Sorteado ${aleatorio}`;
+    }
+    function gerar50a50(){
+        var min = -50
+        var max = 50
+        var intervalo = max - min
+        var aleatorio = Math.random() * intervalo + min;
+       // aleatorio = aleatorio.toFixed(0)
+        div_mensagem.innerHTML = `Sorteado ${aleatorio.toFixed(0)}`;
+    }
+    function sortear3(){
+        var min = 1
+        var max = 5
+        var intervalo = max - min
+        var aleatorio = (Math.random() * intervalo + min).toFixed(0);
+        for(var cont = 1; aleatorio != 3; cont++ ){
+            var aleatorio = (Math.random() * intervalo + min).toFixed(0);
+        }
+        div_mensagem.innerHTML = `Achou o ${aleatorio} em ${cont} tentativas`;
+    }
+</script>
