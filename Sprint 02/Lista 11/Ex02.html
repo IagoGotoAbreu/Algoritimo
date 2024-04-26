@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 02</title>
+</head>
+<body>
+    Destino de viagem:
+    <input type="text" id="input_destino">
+    <br>
+    <button onclick="adicionar()">Adicionar</button>
+    <br>
+    <button onclick="primeira()">Primeira Viagem</button>
+    <br>
+    <button onclick="terceira()">Terceira Viagem</button>
+    <br>
+    <button onclick="ultima()">Última Viagem</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    var listaDestino = []
+    function adicionar(){
+        var destino = input_destino.value;
+            listaDestino.push(destino);
+        div_mensagem.innerHTML += `${listaDestino}<br>`;
+    }
+    function primeira(){
+        var tamanho_lista = listaDestino.length
+        if(tamanho_lista < 0){
+            div_mensagem.innerHTML = `Ainda não viajou`
+        } else {
+            div_mensagem.innerHTML = `A primeira viagem foi`
+        }
+        
+    }
+    function terecira(){
+        var tamanho_lista = listaDestino.length
+
+    }
+    function ultima(){
+        var tamanho_lista = listaDestino.length - 1
+
+    }
+
+</script>
