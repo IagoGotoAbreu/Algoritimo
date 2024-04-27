@@ -20,28 +20,39 @@
 </body>
 </html>
 <script>
+
     var listaDestino = []
     function adicionar(){
         var destino = input_destino.value;
             listaDestino.push(destino);
         div_mensagem.innerHTML += `${listaDestino}<br>`;
     }
-    function primeira(){
-        var tamanho_lista = listaDestino.length
-        if(tamanho_lista < 0){
-            div_mensagem.innerHTML = `Ainda não viajou`
-        } else {
-            div_mensagem.innerHTML = `A primeira viagem foi`
-        }
-        
-    }
-    function terecira(){
-        var tamanho_lista = listaDestino.length
 
+    function primeira(){
+        var destino = input_destino.value
+        if (listaDestino.indexOf(destino) < 0){
+            div_mensagem.innerHTML = "Ainda não viajou"
+        } else if (listaDestino.indexOf(destino) == 0){
+            div_mensagem.innerHTML = `Primeira Viagem: ${listaDestino}`
+        }
     }
+    
+    function terecira(){
+        var destino = input_destino.value
+        if (listaDestino.indexOf(destino) < 0){
+            div_mensagem.innerHTML = "Ainda não viajou"
+        } else if (listaDestino.indexOf(destino) == 2){
+            div_mensagem.innerHTML = `Terceira Viagem: ${listaDestino}`
+        }
+    }
+    
     function ultima(){
         var tamanho_lista = listaDestino.length - 1
-
+        if (listaDestino.indexOf(destino) < 0){
+            div_mensagem.innerHTML = "Ainda não viajou"
+        } else if (listaDestino == tamanho_lista) {
+            div_mensagem.innerHTML = `Última viagem: ${tamanho_lista}`
+        }
     }
 
 </script>
