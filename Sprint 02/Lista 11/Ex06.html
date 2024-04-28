@@ -6,18 +6,24 @@
     <title>Exercício 06</title>
 </head>
 <body>
+
     Seus Filmes Favoritos:
     <input type="text" id="input_filmes">
     <br>
     <button onclick="cadastrar()">Cadastrar</button>
     <div id="div_mensagem"></div>
+    
 </body>
 </html>
+
 <script>
-    var listaFilmes = []
+
+    var lista_filme = []
     function cadastrar(){
         var filme = input_filmes.value
-        listaFilmes.push(filme);
-        div_mensagem.innerHTML += `${listaFilmes}<br>`
+        lista_filme.push(filme);
+        div_mensagem.innerHTML += `${filme}<br>`
+        //div_mensagem.innerHTML += `${lista_filme}<br>`
     }
+
 </script>

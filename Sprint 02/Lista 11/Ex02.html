@@ -6,6 +6,7 @@
     <title>Exercício 02</title>
 </head>
 <body>
+    
     Destino de viagem:
     <input type="text" id="input_destino">
     <br>
@@ -17,41 +18,45 @@
     <br>
     <button onclick="ultima()">Última Viagem</button>
     <div id="div_mensagem"></div>
+
 </body>
 </html>
+
 <script>
 
-    var listaDestino = []
+    var lista_destino = [];
+
     function adicionar(){
-        var destino = input_destino.value;
-            listaDestino.push(destino);
-        div_mensagem.innerHTML += `${listaDestino}<br>`;
+        var destino = input_destino.value
+            lista_destino.push(destino)
     }
 
     function primeira(){
         var destino = input_destino.value
-        if (listaDestino.indexOf(destino) < 0){
+        if (lista_destino.length == 0){
             div_mensagem.innerHTML = "Ainda não viajou"
-        } else if (listaDestino.indexOf(destino) == 0){
-            div_mensagem.innerHTML = `Primeira Viagem: ${listaDestino}`
+        } else {
+            div_mensagem.innerHTML = `Primeira Viagem: ${lista_destino[0]}`
         }
     }
-    
-    function terecira(){
+
+    function terceira(){
         var destino = input_destino.value
-        if (listaDestino.indexOf(destino) < 0){
+        if (lista_destino.length == 0){
             div_mensagem.innerHTML = "Ainda não viajou"
-        } else if (listaDestino.indexOf(destino) == 2){
-            div_mensagem.innerHTML = `Terceira Viagem: ${listaDestino}`
+        } else if (lista_destino.length < 3){
+            div_mensagem.innerHTML = "Ainda não fez a terceira viagem"
+        } else {
+            div_mensagem.innerHTML = `Terceira Viagem: ${lista_destino[2]}`
         }
     }
-    
+
     function ultima(){
-        var tamanho_lista = listaDestino.length - 1
-        if (listaDestino.indexOf(destino) < 0){
+        var destino = input_destino.value
+        if (lista_destino.length == 0){
             div_mensagem.innerHTML = "Ainda não viajou"
-        } else if (listaDestino == tamanho_lista) {
-            div_mensagem.innerHTML = `Última viagem: ${tamanho_lista}`
+        } else {
+            div_mensagem.innerHTML = `Última Viagem: ${lista_destino[lista_destino.length - 1]}`
         }
     }
 
