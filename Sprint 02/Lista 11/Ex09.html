@@ -6,20 +6,28 @@
     <title>Exercício 09</title>
 </head>
 <body>
+
     Nome dos projetos que já criou na vida:
     <input type="text" id="input_projeto">
     <button onclick="cadastrar()">Registrar Projeto</button>
     <button onclick="mostrar()">Mostrar Projetos</button>
     <div id="div_mensagem"></div>
+
 </body>
 </html>
 
 <script>
+
     var lista_projetos = []
+
     function cadastrar(){
+
         var projeto = input_projeto.value
+
         lista_projetos.push(projeto)
+
         var tamanho_lista = lista_projetos.length
+
         var cargo = ""
 
         if(tamanho_lista <= 4){
@@ -31,4 +39,19 @@
         }
         div_mensagem.innerHTML = `Você já fez ${tamanho_lista} projetos. Por isso você é um profissional ${cargo}`
     }
+
+    function mostrar(){
+
+        var tamanho_lista = lista_projetos.length
+
+        div_mensagem.innerHTML = ""
+
+        for(var index = tamanho_lista - 1; index >= 0; index--){
+
+            var projeto_atual = lista_projetos[index]
+
+            div_mensagem.innerHTML += `${projeto_atual}<br>`
+        }
+    }
+
 </script>
