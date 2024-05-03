@@ -42,6 +42,7 @@
 
 <script>
     function verificar(){
+        div_mensagem.innerHTML = ""
         var macaron = Number(input_macaron.value)
         var brigadeiro = Number(input_brigadeiro.value)
         var cupcake = Number(input_cupcake.value)
@@ -61,22 +62,22 @@
             var valor_total_cheesecake = cheesecake * preco_cheesecake
             var valor_total = valor_total_brigadeiro + valor_total_macaron + valor_total_cheesecake + valor_total_cupcake
             for(var contM = 1; contM <= macaron; contM++){
-                div_mensagem.innerHTML += `${contador} - <img src="https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron-768x619.jpg"> - R$${preco_macaron}<br>`
+                div_mensagem.innerHTML += `Venda ${contador} - <img src="https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron-768x619.jpg"> - R$${preco_macaron}<br>`
                 contador++
             }
             for(var contB = 1; contB <= brigadeiro; contB++){
-                div_mensagem.innerHTML += `${contador} - <img src="https://i.panelinha.com.br/i1/228-q-2859-brigadeiro.webp"> - R$${preco_brigadeiro}<br>`
+                div_mensagem.innerHTML += `Venda ${contador} - <img src="https://i.panelinha.com.br/i1/228-q-2859-brigadeiro.webp"> - R$${preco_brigadeiro}<br>`
                 contador++
             }
             for(var contC = 1; contC <= cupcake; contC++){
-                div_mensagem.innerHTML += `${contador} - <img src="https://www.receitasnestle.com.br/sites/default/files/srh_recipes/0fff5f03afb90bb990364a480f294cd7.jpg"> - R$${preco_cupcake}<br>`
+                div_mensagem.innerHTML += `Venda ${contador} - <img src="https://www.receitasnestle.com.br/sites/default/files/srh_recipes/0fff5f03afb90bb990364a480f294cd7.jpg"> - R$${preco_cupcake}<br>`
                 contador++
             }
             for(var contChe = 1; contChe <= cheesecake; contChe++){
-                div_mensagem.innerHTML += `${contador} - <img src="https://static.itdg.com.br/images/360-240/722816207b46644920ab0c65a7faab72/shutterstock-2202992931.jpg"> - R$${preco_cheesecake}<br>`
+                div_mensagem.innerHTML += `Venda ${contador} - <img src="https://static.itdg.com.br/images/360-240/722816207b46644920ab0c65a7faab72/shutterstock-2202992931.jpg"> - R$${preco_cheesecake}<br>`
                 contador++
             }
-            div_mensagem.innerHTML += `Com a quantidade de ${contM} Macarons, ${contB} Brigadeiros, ${contC} Cupcakes e ${contChe} Cheesecakes, a venda totalizará R$${valor_total}`
+            div_mensagem.innerHTML += `<br>Com a quantidade de ${contM-1} Macarons, ${contB-1} Brigadeiros, ${contC-1} Cupcakes e ${contChe-1} Cheesecakes, a venda totalizará R$${valor_total}`
         }
     }
 
