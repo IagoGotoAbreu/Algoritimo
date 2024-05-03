@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria</title>
+    <style>
+        img{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    Quantidade de Macarons:
+    <input type="text" id="input_macaron">
+    Valor da Unidade do Macaron: 
+    <input type="number" id="input_preco_macaron">
+    <br>
+    <br>
+    Quantidade de Brigadeiros:
+    <input type="text" id="input_brigadeiro">
+    Valor da Unidade do Brigadeiro: 
+    <input type="number" id="input_preco_brigadeiro">
+    <br>
+    <br>
+    Quantidade de Cupcakes:
+    <input type="text" id="input_cupcake">
+    Valor da Unidade do Cupcake: 
+    <input type="number" id="input_preco_cupcake">
+    <br>
+    <br>
+    Quantidade de Cheesecakes:
+    <input type="text" id="input_cheesecake">
+    Valor da Unidade do Cheesecake: 
+    <input type="number" id="input_preco_cheesecake">
+    <br>
+    <br>
+    <button onclick="verificar()">Verificar Vendas</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+
+<script>
+    function verificar(){
+        var macaron = Number(input_macaron.value)
+        var brigadeiro = Number(input_brigadeiro.value)
+        var cupcake = Number(input_cupcake.value)
+        var cheesecake = Number(input_cheesecake.value)
+        var preco_macaron = Number(input_preco_macaron.value)
+        var preco_brigadeiro = Number(input_preco_brigadeiro.value)
+        var preco_cupcake = Number(input_preco_cupcake.value)
+        var preco_cheesecake = Number(input_preco_cheesecake.value)
+        var contador = 1
+
+        if(macaron < 0 || brigadeiro < 0 || cupcake < 0 || cheesecake < 0 || preco_macaron < 0 || preco_brigadeiro < 0 || preco_cupcake < 0 || preco_cheesecake < 0){
+            alert("Algum dos seus valores está negativo, por favor corrija")
+        } else {
+            var valor_total_macaron = macaron * preco_macaron
+            var valor_total_brigadeiro = brigadeiro * preco_brigadeiro
+            var valor_total_cupcake = cupcake * preco_cupcake
+            var valor_total_cheesecake = cheesecake * preco_cheesecake
+            var valor_total = valor_total_brigadeiro + valor_total_macaron + valor_total_cheesecake + valor_total_cupcake
+            for(var contM = 1; contM <= macaron; contM++){
+                div_mensagem.innerHTML += `${contador} - <img src="https://guiadacozinha.com.br/wp-content/uploads/2021/08/macaron-768x619.jpg"> - R$${preco_macaron}<br>`
+                contador++
+            }
+            for(var contB = 1; contB <= brigadeiro; contB++){
+                div_mensagem.innerHTML += `${contador} - <img src="https://i.panelinha.com.br/i1/228-q-2859-brigadeiro.webp"> - R$${preco_brigadeiro}<br>`
+                contador++
+            }
+            for(var contC = 1; contC <= cupcake; contC++){
+                div_mensagem.innerHTML += `${contador} - <img src="https://www.receitasnestle.com.br/sites/default/files/srh_recipes/0fff5f03afb90bb990364a480f294cd7.jpg"> - R$${preco_cupcake}<br>`
+                contador++
+            }
+            for(var contChe = 1; contChe <= cheesecake; contChe++){
+                div_mensagem.innerHTML += `${contador} - <img src="https://static.itdg.com.br/images/360-240/722816207b46644920ab0c65a7faab72/shutterstock-2202992931.jpg"> - R$${preco_cheesecake}<br>`
+                contador++
+            }
+            div_mensagem.innerHTML += `Com a quantidade de ${contM} Macarons, ${contB} Brigadeiros, ${contC} Cupcakes e ${contChe} Cheesecakes, a venda totalizará R$${valor_total}`
+        }
+    }
+
+</script>
