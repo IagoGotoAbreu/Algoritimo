@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10</title>
+</head>
+
+<body>
+    Linhas do busão:
+    <input type="text" id="input_linha_busao">
+    <button onclick="gravar()">Gravar busão</button>
+    <button onclick="pesquisar()">Pesquisar</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_linha = []
+    function gravar() {
+        var linha_busao = input_linha_busao.value
+        lista_linha.push(linha_busao)
+        var tamanho_lista = lista_linha.length;
+        div_mensagem.innerHTML = "";
+        for (var index = tamanho_lista - 1; index >= 0; index--) {
+            var linha_atual = lista_linha[index];
+            div_mensagem.innerHTML += `${linha_atual}<br>`
+        }
+    }
+
+    function pesquisar() {
+
+        var cont = 0
+        var texto = ""
+        var linha_busao = input_linha_busao.value
+
+        if (lista_linha.indexOf(linha_busao) >= 0) {
+            for (var index = 0; index < lista_linha.length ; index++) {
+
+                var linha_atual = lista_linha[index];
+                
+                if (linha_atual == linha_busao) {
+                    texto += `${index +1},`
+                    cont++
+                }
+            }
+            div_mensagem.innerHTML = `Você já pegou essa linha ${cont} vezes, nessa ordem: ${texto}`
+        } else {
+            div_mensagem.innerHTML = "Você nunca pegou essa linha"
+        }
+    }
+</script>
