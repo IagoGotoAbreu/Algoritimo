@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 13</title>
+</head>
+
+<body>
+    Indique o resultado:
+    <select id="select_resultado">
+        <option value="#">Selecione uma opção</option>
+        <option value="Vitória">Vitória</option>
+        <option value="Empate">Empate</option>
+        <option value="Derrota">Derrota</option>
+    </select>
+    <button onclick="registrar()">Registrar jogo</button>
+    <br>
+    <br>
+    Indique qual jogo deseja saber o resultado:
+    <input type="number" id="input_numero" oninput="pesquisar()">
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_resultado = [];
+    var texto = ""
+    function registrar() {
+        var resultado = select_resultado.value
+        lista_resultado.push(resultado);
+        var contV = 0
+        var contE = 0
+        var contD = 0
+        var pontos = 0
+        for (var index = 0; index < lista_resultado.length; index++) {
+            var resultado_atual = lista_resultado[index];
+            if (resultado_atual == "Vitória") {
+                contV++
+                pontos += 3
+                
+            } else if (resultado_atual == "Empate") {
+                contE++
+                pontos += 1
+                
+            } else {
+                contD++
+                
+            }
+        }
+        div_mensagem.innerHTML = `<br>O time teve: ${contV} vitórias, ${contE} empates, ${contD} derrotas.<br><br>Pontuação total: ${pontos} pontos.<br><br>Aproveitamento: ${pontos / (index * 3) * 100}%<br><br>`
+    }
+    function pesquisar() {
+        var numero = Number(input_numero.value)
+        if (numero > lista_resultado.length) {
+            div_mensagem.innerHTML += `Não foi cadastrado um ${numero}º jogo<br>`
+        } else {
+            for (var index = 0; index < lista_resultado.length; index++) {
+                var resultado_atual = lista_resultado[index];
+                if (resultado_atual == "Vitória") {
+                    texto = "Ganhou"
+                } else if (resultado_atual == "Empate") {
+                    texto = "Empatou"
+                } else {
+                    texto = "Perdeu"
+                }
+                if(numero == index+1){
+                    div_mensagem.innerHTML += `<br>No ${numero}º jogo, o time ${texto}<br>`
+                }
+            }
+        }
+    }
+</script>

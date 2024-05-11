@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14</title>
+</head>
+
+<body>
+    Digite um número qualquer:
+    <input type="number" id="input_numero">
+    <button onclick="analisar()">Analisar histórico</button>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var lista_numero = []
+    function analisar() {
+        var numero = Number(input_numero.value);
+        lista_numero.push(numero);
+        var maior = -100000000000000000000000000000000000000000000000000000000
+        var menor = 1000000000000000000000000000000000000000000000000000000000
+        for (var index = 0; index < lista_numero.length; index++) {
+            var numero_atual = lista_numero[index];
+            if(lista_numero[index] > maior){
+                maior = lista_numero[index]
+            }
+            if(lista_numero[index] < menor){
+                menor = lista_numero[index]
+            }
+            div_mensagem.innerHTML = `
+            ${index+1}º Número: ${lista_numero[index]} <br> 
+            Maior: ${maior} <br> 
+            Menor: ${menor}
+            `
+        }
+    }
+</script>
