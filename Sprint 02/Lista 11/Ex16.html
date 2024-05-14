@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercício 15</title>
+    <title>Exercício 16</title>
 </head>
 <body>
     Nome do produto:
@@ -21,27 +21,44 @@
 
     var lista_nome = []
     var lista_preco = []
+
     function cadastrar(){
         var nome = input_nome.value;
         var preco = Number(input_preco.value);
         lista_nome.push(nome);
         lista_preco.push(preco);
     }
+
     function relatorio(){
         var maior = lista_preco[0]
         var menor = lista_preco[0]
         var soma = 0
         var media = 0
-        div_mensagem.innerHTML = `<br>Total de produtos: ${lista_nome.length}<br><br>`
+        var texto_maior = ""
+        var texto_menor = ""
+        div_mensagem.innerHTML += `<br>Total de produtos: ${lista_nome.length}<br><br>`
 
         for (var index = 0; index < lista_nome.length; index++) {
-
             soma += lista_preco[index]
-            media = soma / index
-
-            div_mensagem.innerHTML += `<br><br>Produto ${index+1}: ${lista_nome[index]}<br> Preço de compra: R$${lista_preco[index]}. Vender por R$${lista_preco[index]*1.25}<br>`
-
+            if(lista_preco[index] > maior){
+                maior = lista_preco[index]
+                texto_maior = lista_nome[index]
+            }
+            if(lista_preco[index] <= menor){
+                menor = lista_preco[index]
+                texto_menor = lista_nome[index]
+            }
+            div_mensagem.innerHTML += `<br>Produto ${index+1}: ${lista_nome[index]}<br> Preço de compra: R$${lista_preco[index]}. Vender por R$${lista_preco[index]*1.25}<br>`
         }
+        media = soma / lista_nome.length
+        div_mensagem.innerHTML += `<br> Produto mais caro: ${texto_maior} 
+        <br> 
+        Produto mais barato: ${texto_menor} 
+        <br>
+        Soma dos preços: ${soma}
+        <br>
+        Média dos preços: ${media}`
+
     }
 
 </script>
