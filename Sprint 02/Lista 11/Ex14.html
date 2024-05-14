@@ -20,8 +20,9 @@
     function analisar() {
         var numero = Number(input_numero.value);
         lista_numero.push(numero);
-        var maior = -100000000000000000000000000000000000000000000000000000000
-        var menor = 1000000000000000000000000000000000000000000000000000000000
+        var maior = lista_numero[0]
+        var menor = lista_numero[0]
+        div_mensagem.innerHTML = ""
         for (var index = 0; index < lista_numero.length; index++) {
             var numero_atual = lista_numero[index];
             if(lista_numero[index] > maior){
@@ -30,11 +31,8 @@
             if(lista_numero[index] < menor){
                 menor = lista_numero[index]
             }
-            div_mensagem.innerHTML = `
-            ${index+1}º Número: ${lista_numero[index]} <br> 
-            Maior: ${maior} <br> 
-            Menor: ${menor}
-            `
+            div_mensagem.innerHTML += `${index+1}º Número: ${lista_numero[index]}<br>`
         }
+        div_mensagem.innerHTML += `Maior: ${maior} <br> Menor: ${menor}`
     }
 </script>
