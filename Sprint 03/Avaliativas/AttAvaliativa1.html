@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburg & Ria</title>
+</head>
+<body>
+    Ingrediente:
+    <input type="text" id="input_ingrediente">
+    <br>
+    Peso em gramas:
+    <input type="text" id="input_peso_gramas">
+    <br>
+    <input type="number" id="input_preco">
+    <br>
+    <button onclick="adicionar()">Adicionar Ingrediente no Blend</button>
+    <br>
+    <br>
+    Nome do Hamburguer:
+    <input type="text" id="input_nome">
+    <br>
+    <button onclick="preparar()">Preparar Blend e Registrar</button>
+    <br>
+    <br>
+    <button onclick="montar()">Montar Cardápio</button>
+    <div id="div_mensagem"></div>
+</body>
+</html>
+<script>
+    var lista_ingredientes=[]
+    function adicionar(){
+        var ingrediente = input_ingrediente.value
+        lista_ingredientes.push(ingrediente)
+    }
+    
+</script>

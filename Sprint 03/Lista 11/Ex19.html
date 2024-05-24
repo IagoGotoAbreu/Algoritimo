@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 19</title>
+</head>
+<body>
+    Fale os filmes que já viu:
+    <input type="text" id="input_filme">
+    <button onclick="cadastrar()">Cadastrar</button>
+    <div id="div_mensagem"></div>
+    <br>
+    <button onclick="exibir()">Listar Filmes</button>
+    <div id="div_msg"></div>
+    <br>
+    De...
+    <input type="number" id="input_n1">
+    Até...
+    <input type="number" id="input_n2">
+    <button onclick="filtrar()">Filtrar Filmes</button>
+    <div id="div_filtrar"></div>
+</body>
+</html>
+<script>
+    var lista_filmes = []
+    function cadastrar(){
+        div_mensagem.innerHTML = ""
+        var filme = input_filme.value
+        lista_filmes.push(filme)
+        for (var index = 0; index < lista_filmes.length; index++) {
+            div_mensagem.innerHTML = `Você já assistiu ${index+1} filmes`
+        }
+    }
+    function exibir(){
+        for (var index = lista_filmes.length-1; index >= 0; index--) {
+            div_msg.innerHTML += `${lista_filmes[index]}<br>`
+        }
+    }
+    function filtrar(){
+        var n1 = Number(input_n1.value)-1
+        var n2 = Number(input_n2.value)-1
+        for (var index = n2; index >= n1; index--) {
+            div_filtrar.innerHTML += `${lista_filmes[index]}<br>`
+        }
+    }
+</script>
