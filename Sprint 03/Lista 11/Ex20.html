@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício 20</title>
 </head>
+
 <body>
     Nome do produto:
     <input type="text" id="input_nome">
@@ -13,16 +15,28 @@
     <button onclick="cadastrar()">Cadastrar</button>
     <button onclick="atualizar()">Atualizar Estoque</button>
     <div id="div_mensagem"></div>
+    <br>
+    <br>
+    <select id="select_preco">
+        <option value="#">Selecione uma Opção</option>
+        <option value="maior">Preços acima de</option>
+        <option value="menor">Preços abaixo de</option>
+    </select>
+    Valor:
+    <input type="number" id="input_valor">
+    <button onclick="filtrar()">Filtrar Produtos</button>
+    <div id="div_msg"></div>
 </body>
+
 </html>
 
 <script>
     var lista_nome = []
     var lista_preco = []
-    function cadastrar(){
+    function cadastrar() {
         var nome = input_nome.value
         var preco = Number(input_preco.value)
-        if(nome.length < 3 || preco < 0){
+        if (nome.length < 3 || preco < 0) {
             div_mensagem.innerHTML = `Cadastrado inválido!`
         } else {
             lista_nome.push(nome)
@@ -30,11 +44,38 @@
             div_mensagem.innerHTML = `Cadastrado com Sucesso!`
         }
     }
-    function atualizar(){
+    function atualizar() {
         div_mensagem.innerHTML = ""
+        var soma = 0
         div_mensagem.innerHTML += `Você tem ${lista_nome.length} produtos cadastrados em estoque:<br>`
         for (var index = 0; index < lista_nome.length; index++) {
-            div_mensagem.innerHTML += `${index+1}. ${lista_nome[index]} - R$${lista_preco[index]}<br>`
+            div_mensagem.innerHTML += `${index + 1}. ${lista_nome[index]} - R$${lista_preco[index]}<br>`
+            soma += lista_preco[index]
+        }
+        div_mensagem.innerHTML += `Seu estoque vale R$${soma}`
+    }
+    function filtrar() {
+        var valor = Number(input_valor.value)
+        var tipo = select_preco.value
+        // if (tipo == "maior") {
+        //     for (var index = 0; index < lista_preco.length; index++) {
+        //         if (lista_preco[index] > valor) {
+        //             div_msg.innerHTML += `${lista_nome[index]} - R$${lista_preco[index]}<br>`
+        //         }
+        //     }
+        // } else {
+        //     for (var index = 0; index < lista_preco.length; index++) {
+        //         if (lista_preco[index] < valor) {
+        //             div_msg.innerHTML += `${lista_nome[index]} - R$${lista_preco[index]}<br>`
+        //         }
+        //     }
+        // }
+        for (var index = 0; index < lista_preco.length; index++) {
+            if (tipo == "maior" && lista_preco[index] > valor) {
+                div_msg.innerHTML += `${lista_nome[index]} - R$${lista_preco[index]}<br>`
+            } else if (tipo == "menor" && lista_preco[index] < valor) {
+                div_msg.innerHTML += `${lista_nome[index]} - R$${lista_preco[index]}<br>`
+            }
         }
     }
 </script>
