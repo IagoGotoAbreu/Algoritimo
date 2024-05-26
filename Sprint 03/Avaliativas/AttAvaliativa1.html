@@ -1,37 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamburg & Ria</title>
 </head>
+
 <body>
-    Ingrediente:
-    <input type="text" id="input_ingrediente">
-    <br>
-    Peso em gramas:
-    <input type="text" id="input_peso_gramas">
-    <br>
-    <input type="number" id="input_preco">
-    <br>
-    <button onclick="adicionar()">Adicionar Ingrediente no Blend</button>
-    <br>
-    <br>
-    Nome do Hamburguer:
-    <input type="text" id="input_nome">
-    <br>
-    <button onclick="preparar()">Preparar Blend e Registrar</button>
-    <br>
-    <br>
-    <button onclick="montar()">Montar Cardápio</button>
-    <div id="div_mensagem"></div>
+
+    <div id="tela1" style="display: block;">
+        Ingrediente:
+        <input type="text" id="input_ingrediente">
+        <br>
+        Peso em gramas:
+        <input type="number" id="input_peso_gramas">
+        <br>
+        Preço por quilo:
+        <input type="number" id="input_preco">
+        <br>
+        <button onclick="cadastrar()">Adicionar Ingrediente no Blend</button>
+        <br>
+        <br>
+        Nome do Hamburguer:
+        <input type="text" id="input_nome">
+        <br>
+        <button onclick="preparar()">Preparar Blend e Registrar</button>
+        <br>
+        <br>
+        <button onclick="montar()">Montar Cardápio</button>
+        <div id="div_mensagem"></div>
+    </div>
+
+    <div id="cardapio" style="display: none;">
+        Tipo de Hamburguer:
+        <input type="text" id="input_tipo_hamburguer">
+        <br>
+        Quantidade de Hamburguers:
+        <input type="number" id="input_qtd_hamburguers">
+        <br>
+        Queijo:
+        <select id="select_queijo">
+            <option value="Sem Quiejo">Não Colocar</option>
+            <option value="Mussarela">Mussarela</option>
+            <option value="Prato">Prato</option>
+            <option value="Cheddar">Cheddar</option>
+        </select>
+        <br>
+        Cebola:
+        <select id="select_cebola">
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select>
+        <br>
+        Alface:
+        <select id="select_alface">
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select>
+        <br>
+        Tomate:
+        <select id="select_tomate">
+            <option value="Não">Não</option>
+            <option value="Sim">Sim</option>
+        </select>
+        <br>
+        <button onclick="adicionar()">Adicionar Lanche</button>
+        <div id="div_msg"></div>
+    </div>
 </body>
+
 </html>
 <script>
-    var lista_ingredientes=[]
-    function adicionar(){
-        var ingrediente = input_ingrediente.value
-        lista_ingredientes.push(ingrediente)
+
+    var lista_ingredientes_nome = []
+    var lista_ingredientes_peso_gramas = []
+    var lista_ingredientes_preco_quilo = []
+
+    var lista_catalogo_nome = []
+    var lista_catalogo_peso = []
+    var lista_catalogo_preco_final = []
+
+    function cadastrar() {
+
+        var ingrediente_nome = input_ingrediente.value
+        var ingrediente_peso_gramas = Number(input_peso_gramas.value)
+        var ingrediente_preco_quilo = Number(input_preco.value)
+
+        if (ingrediente_nome == "" || ingrediente_peso_gramas == "" || ingrediente_preco_quilo == "") {
+
+            div_mensagem.innerHTML = `<br><b><span style="color: red;">Preencha todos os campos para prosseguir!</span></b>`
+        } else if (lista_ingredientes_nome.indexOf(ingrediente_nome) >= 0) {
+
+            div_mensagem.innerHTML = `<br><b><span style="color: red;">O ingrediente "${ingrediente_nome}" já foi adicionado nesta mistura!</span></b>`
+        } else {
+            lista_ingredientes_nome.push(ingrediente_nome)
+            lista_ingredientes_peso_gramas.push(ingrediente_peso_gramas)
+            lista_ingredientes_preco_quilo.push(ingrediente_preco_quilo)
+            div_mensagem.innerHTML = `<br><span style="color: green;">Adicionados ${ingrediente_peso_gramas} gramas de "${ingrediente_nome}" no blend do hamburguer!</span>`
+        }
     }
-    
+
+    function preparar() {
+
+        div_mensagem.innerHTML = ""
+        var nome_hamburguer = input_nome.value
+        var peso_total = 0
+        var preco_total = 0
+
+        if (lista_ingredientes_nome.length < 2) {
+            div_mensagem.innerHTML = `<br><b><span style="color: red;">Adicione ao menos 2 ingredientes para o blend do hamburguer.</span></b>`
+        } else if (nome_hamburguer == "") {
+            div_mensagem.innerHTML = `<br><b><span style="color: red;">Informe o nome do novo hamburguer.</span></b>`
+        } else {
+            div_mensagem.innerHTML += `<br><b>PREPARANDO NOVO HAMBURGUER</b><br>`
+            for (var index = 0; index < lista_ingredientes_nome.length; index++) {
+                peso_total += lista_ingredientes_peso_gramas[index]
+                preco_total += lista_ingredientes_peso_gramas[index] / 1000 * lista_ingredientes_preco_quilo[index]
+                div_mensagem.innerHTML += `${index + 1} – 
+                Ingrediente: <b>${lista_ingredientes_nome[index]}</b> – 
+                Peso: <b>${lista_ingredientes_peso_gramas[index]}</b>g - 
+                Preço KG: R$<b>${lista_ingredientes_preco_quilo[index]}</b> - 
+                Preço Final: R$<b>${lista_ingredientes_peso_gramas[index] / 1000 * lista_ingredientes_preco_quilo[index]}</b><br>`
+            }
+            div_mensagem.innerHTML += `<br><b>INFORMAÇÕES DO HAMBURGUER REGISTRADO NO CATÁLOGO:</b><br>
+            Nome: <b>${nome_hamburguer}</b><br>
+            Peso Total: <b>${peso_total}</b>g<br>
+            Preço Total: R$<b>${preco_total}</b>`
+            lista_catalogo_nome.push(nome_hamburguer)
+            lista_catalogo_peso.push(peso_total)
+            lista_catalogo_preco_final.push(preco_total)
+        }
+    }
+
+    function montar() {
+
+        if (lista_catalogo_nome.length < 1 || lista_catalogo_peso.length < 1 || lista_catalogo_preco_final.length < 1) {
+            div_mensagem.innerHTML = `<br><b><span style="color: red;">Adicione ao menos um novo blend de hamburguer para prosseguir.</span></b>`
+        } else {
+            tela1.style.display = 'none'
+            cardapio.style.display = 'block'
+        }
+    }
+
+    function adicionar() {
+
+        var hamburguer = input_tipo_hamburguer.value
+        var qtd_hamburguer = Number(input_qtd_hamburguers.value)
+        var queijo = select_queijo.value
+        var cebola = select_cebola.value
+        var alface = select_alface.value
+        var tomate = select_tomate.value
+
+        var preco_queijo = 0
+        var preco_cebola = 0
+        var preco_alface = 0
+        var preco_tomate = 0
+        var preco_final = 0
+
+        if (queijo == "Sem Quijo") {
+            preco_queijo = 0
+        } else if (queijo == "Mussarela") {
+            preco_queijo = 2
+        } else if (queijo == "Prato") {
+            preco_queijo = 2.5
+        } else if (queijo == "Cheddar") {
+            preco_queijo = 3
+        }
+
+        if (cebola == 'Não') {
+            preco_cebola = 0
+        } else if (cebola == 'Sim') {
+            preco_cebola = 1.5
+        }
+
+        if (alface == 'Não') {
+            preco_alface = 0
+        } else if (alface == 'Sim') {
+            preco_alface = 1.75
+        }
+
+        if (tomate == 'Não') {
+            preco_tomate = 0
+        } else if (tomate == 'Sim') {
+            preco_tomate = 2
+        }
+
+        var aux = lista_catalogo_preco_final * qtd_hamburguer
+
+        preco_final = preco_queijo + preco_cebola + preco_alface + preco_tomate + aux
+
+        if (lista_catalogo_nome == "" || qtd_hamburguer <= 0) {
+            div_msg.innerHTML = `<br><b><span style="color: red;">Informe corretamente o tipo de hamburguer e a quantidade.</span></b>`
+        } else if (lista_catalogo_nome.indexOf(hamburguer) < 0){
+            div_msg.innerHTML = `<br><b><span style="color: red;">O hambuguer '${hamburguer}' não existe no catálogo de hamburguers.</span></b>`
+        } else {
+            div_msg.innerHTML = ""
+            div_msg.innerHTML += `<br>Tipo Hamburguer: <b>${lista_catalogo_nome}</b>  (<b>${lista_catalogo_peso}</b>g / R$<b>${lista_catalogo_preco_final}</b>) <br>
+             Quantidade de Hamburgueres: <b>${qtd_hamburguer}</b>x <br>
+             Queijo: <b>${queijo}</b> <br>
+             Cebola: <b>${cebola}</b> <br>
+             Alface: <b>${alface}</b> <br>
+             Tomate: <b>${tomate}</b> <br><br>
+             Preço Final do Lanche: R$<b>${preco_final}</b>`
+        }
+    }
 </script>
