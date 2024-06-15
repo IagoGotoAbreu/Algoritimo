@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+
+<script>
+
+    // console.log('1: ', variavel); // Quebra o Código! - "variavel" não está definida no script!
+    
+    if (true) { // o escopo de código é o próprio IF
+        let variavel = 123; // por ser declarada DENTRO do if, os LOGS de fora não podem enxergar/acessar essa variável
+        variavel = 'abc';
+    }
+    
+    console.log('2: ', variavel);
+
+</script>

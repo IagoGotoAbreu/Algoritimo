@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cadastro de Endereços</h1>
+    <!--     
+        <label for="input_teste">Teste: </label> 
+        <input type="text" id="input_teste"> 
+    -->
+
+    <label>
+        Nome: <input type="text" id="input_nome">
+    </label> 
+    
+    <br>
+
+    <label>
+        CEP: <input maxlength="8" oninput="buscar()" type="text" id="input_cep">
+    </label> 
+    
+    <br>
+
+    <label>
+        Logradouro: <input type="text" id="input_logradouro">
+    </label> 
+    
+    <br>
+
+    <label>
+        Complemento: <input type="text" id="input_complemento">
+    </label> 
+    
+    <br>
+
+    <label>
+        Bairro: <input type="text" id="input_bairro">
+    </label> 
+    
+    <br>
+
+    <label>
+        Cidade: <input type="text" id="input_cidade">
+    </label> 
+    
+    <br>
+
+    <label>
+        Estado: <input type="text" id="input_estado">
+        <br>
+        Select Estado: 
+        <select id="select_estado">
+            <option disabled selected>Selecione</option>
+            <option>RJ</option>
+            <option>MG</option>
+            <option>PR</option>
+            <option>SP</option>
+        </select>
+    </label> 
+    
+    <br>
+
+    <div id="div_mensagem"></div>
+    <!-- <button onclick="buscar()">Buscar</button> -->
+
+</body>
+</html>
+
+<script>
+
+    function buscar() {
+        var nome = input_nome.value;
+        var cep = input_cep.value;
+
+        if (cep.length == 8) {
+
+            // fetch significa "buscar" e serve para realizar requisições HTTP
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(function (respostaServidor) { // caso a requisição dê certo, ENTÃO, recebe essa resposta do servidor e trabalha manipula ela
+                console.log(respostaServidor);
+    
+                // formata a resposta recebida do servidor para JSON, a fim de acessar os dados recebidos
+                respostaServidor.json()
+                .then(function (respostaFormatada) { // depois de formatar, ENTÃO, recebe a resposta formatada para manipular os dados dentro do JSON
+                    console.log(respostaFormatada);
+                    div_mensagem.innerHTML = `DADOS RECEBIDOS: ${JSON.stringify(respostaFormatada)}`; // JSON.stringify() transforma um JSON em texto, senão, exibirá "[object Object]" na div ao invés dos dados do JSON
+    
+                    input_logradouro.value = respostaFormatada.logradouro; // altera o valor do campo "logradouro" para o valor do atributo "logradouro" recebido no JSON de resposta
+                    input_complemento.value = respostaFormatada.complemento; // altera o valor do campo "complemento" para o valor do atributo "complemento" recebido no JSON de resposta
+                    input_bairro.value = respostaFormatada.bairro; // altera o valor do campo "bairro" para o valor do atributo "bairro" recebido no JSON de resposta
+                    input_cidade.value = respostaFormatada.localidade; // altera o valor do campo "cidade" para o valor do atributo "cidade" recebido no JSON de resposta
+                    input_estado.value = respostaFormatada.uf; // altera o valor do campo "estado" para o valor do atributo "estado" recebido no JSON de resposta
+                
+                    select_estado.value = respostaFormatada.uf; // seleciona a opção se o valor da opção der match com o valor da UF
+                })
+    
+            })
+            .catch(function (erro) { // caso haja algum erro na requisição, "PEGAR o erro" (catch error)
+                console.log(erro); // exibe o erro capturado;
+            })
+        }
+
+    }
+
+</script>

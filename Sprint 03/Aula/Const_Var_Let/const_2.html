@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+
+<script>
+
+    // console.log('1: ', constante); // Quebra o Código! - "constante" não está definida no script!
+    
+    if (true) { // o escopo de código é o próprio IF
+        
+        const constante = 123; // por ser declarada DENTRO do if, os LOGS de fora não podem enxergar/acessar essa variável
+        
+        // constante = 'abc'; // Quebra o Código! - não pode reatribuir uma constante
+    
+    }
+    
+    console.log('2: ', constante);
+
+</script>
