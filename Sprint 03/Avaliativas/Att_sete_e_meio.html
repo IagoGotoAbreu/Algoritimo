@@ -1,73 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sete e Meio</title>
 </head>
 <body>
-    <div id="tela1" style="display: block;">
+    <div id="tela1" style="display: block">
         <button onclick="jogar()">Jogar Sete e Meio</button>
     </div>
-    <div id="tela2" style="display: none;">
-        <button>Pedir Outra Carta</button>
-        <button>Passar Vez</button>
-        <br>
+    <div id="tela2" style="display: none">
+        <button onclick="pedir()">Pedir Outra Carta</button>
+        <button onclick="passar()">Passar Vez</button>
+        <br />
         <div id="div_mensagem"></div>
     </div>
 </body>
+
 </html>
 <script>
+    var lista_baralho = [
+        { valor: "Ás", naipe: "ouros", indice: "1", pontos: 1 },
+        { valor: "2", naipe: "ouros", indice: "2", pontos: 2 },
+        { valor: "3", naipe: "ouros", indice: "3", pontos: 3 },
+        { valor: "4", naipe: "ouros", indice: "4", pontos: 4 },
+        { valor: "5", naipe: "ouros", indice: "5", pontos: 5 },
+        { valor: "6", naipe: "ouros", indice: "6", pontos: 6 },
+        { valor: "7", naipe: "ouros", indice: "7", pontos: 7 },
+        { valor: "J", naipe: "ouros", indice: "8", pontos: 0.5 },
+        { valor: "Q", naipe: "ouros", indice: "9", pontos: 0.5 },
+        { valor: "K", naipe: "ouros", indice: "10", pontos: 0.5 },
+        { valor: "Ás", naipe: "espadas", indice: "11", pontos: 1 },
+        { valor: "2", naipe: "espadas", indice: "12", pontos: 2 },
+        { valor: "3", naipe: "espadas", indice: "13", pontos: 3 },
+        { valor: "4", naipe: "espadas", indice: "14", pontos: 4 },
+        { valor: "5", naipe: "espadas", indice: "15", pontos: 5 },
+        { valor: "6", naipe: "espadas", indice: "16", pontos: 6 },
+        { valor: "7", naipe: "espadas", indice: "17", pontos: 7 },
+        { valor: "J", naipe: "espadas", indice: "18", pontos: 0.5 },
+        { valor: "Q", naipe: "espadas", indice: "19", pontos: 0.5 },
+        { valor: "K", naipe: "espadas", indice: "20", pontos: 0.5 },
+        { valor: "Ás", naipe: "copas", indice: "21", pontos: 1 },
+        { valor: "2", naipe: "copas", indice: "22", pontos: 2 },
+        { valor: "3", naipe: "copas", indice: "23", pontos: 3 },
+        { valor: "4", naipe: "copas", indice: "24", pontos: 4 },
+        { valor: "5", naipe: "copas", indice: "25", pontos: 5 },
+        { valor: "6", naipe: "copas", indice: "26", pontos: 6 },
+        { valor: "7", naipe: "copas", indice: "27", pontos: 7 },
+        { valor: "J", naipe: "copas", indice: "28", pontos: 0.5 },
+        { valor: "Q", naipe: "copas", indice: "29", pontos: 0.5 },
+        { valor: "K", naipe: "copas", indice: "30", pontos: 0.5 },
+        { valor: "Ás", naipe: "paus", indice: "31", pontos: 1 },
+        { valor: "2", naipe: "paus", indice: "32", pontos: 2 },
+        { valor: "3", naipe: "paus", indice: "33", pontos: 3 },
+        { valor: "4", naipe: "paus", indice: "34", pontos: 4 },
+        { valor: "5", naipe: "paus", indice: "35", pontos: 5 },
+        { valor: "6", naipe: "paus", indice: "36", pontos: 6 },
+        { valor: "7", naipe: "paus", indice: "37", pontos: 7 },
+        { valor: "J", naipe: "paus", indice: "38", pontos: 0.5 },
+        { valor: "Q", naipe: "paus", indice: "39", pontos: 0.5 },
+        { valor: "K", naipe: "paus", indice: "40", pontos: 0.5 },
+    ];
 
-var lista_baralho = [
-    { valor: 'Ás', naipe: 'ouros' },
-    { valor: '2', naipe: 'ouros' },
-    { valor: '3', naipe: 'ouros' },
-    { valor: '4', naipe: 'ouros' },
-    { valor: '5', naipe: 'ouros' },
-    { valor: '6', naipe: 'ouros' },
-    { valor: '7', naipe: 'ouros' },
-    { valor: 'J', naipe: 'ouros' },
-    { valor: 'Q', naipe: 'ouros' },
-    { valor: 'K', naipe: 'ouros' },
-    { valor: 'Ás', naipe: 'espadas' },
-    { valor: '2', naipe: 'espadas' },
-    { valor: '3', naipe: 'espadas' },
-    { valor: '4', naipe: 'espadas' },
-    { valor: '5', naipe: 'espadas' },
-    { valor: '6', naipe: 'espadas' },
-    { valor: '7', naipe: 'espadas' },
-    { valor: 'J', naipe: 'espadas' },
-    { valor: 'Q', naipe: 'espadas' },
-    { valor: 'K', naipe: 'espadas' },
-    { valor: 'Ás', naipe: 'copas' },
-    { valor: '2', naipe: 'copas' },
-    { valor: '3', naipe: 'copas' },
-    { valor: '4', naipe: 'copas' },
-    { valor: '5', naipe: 'copas' },
-    { valor: '6', naipe: 'copas' },
-    { valor: '7', naipe: 'copas' },
-    { valor: 'J', naipe: 'copas' },
-    { valor: 'Q', naipe: 'copas' },
-    { valor: 'K', naipe: 'copas' },
-    { valor: 'Ás', naipe: 'paus' },
-    { valor: '2', naipe: 'paus' },
-    { valor: '3', naipe: 'paus' },
-    { valor: '4', naipe: 'paus' },
-    { valor: '5', naipe: 'paus' },
-    { valor: '6', naipe: 'paus' },
-    { valor: '7', naipe: 'paus' },
-    { valor: 'J', naipe: 'paus' },
-    { valor: 'Q', naipe: 'paus' },
-    { valor: 'K', naipe: 'paus' }];
+    var pontos_jogador = 0;
+    var pontos_banca = 0;
+    var texto = "";
 
-    function jogar(){
-        tela1.style.display = 'none'
-        tela2.style.display = 'block'
-        var sorteador = Number(Math.random() * lista_baralho.length + 1).toFixed(0)
-        console.log(sorteador)
-        
-        
+    function jogar() {
+        tela1.style.display = "none";
+        tela2.style.display = "block";
+
+        var sorteador = Number(Math.random() * lista_baralho.length + 1).toFixed(0);
+
+        for (let index = 0; index < lista_baralho.length; index++) {
+            const carta_atual = lista_baralho[index];
+
+            if (carta_atual.indice == sorteador) {
+                var pontos = 0;
+                pontos += carta_atual.pontos;
+                pontos_jogador = pontos;
+                div_mensagem.innerHTML += `Jogador: <br> (${pontos_jogador} pontos) - ${carta_atual.valor} de ${carta_atual.naipe}`;
+            }
+        }
+    }
+
+    function pedir() {
+        if (pontos_jogador < 7.5) {
+            var sorteador = Number(Math.random() * lista_baralho.length + 1).toFixed(0);
+
+            for (let index = 0; index < lista_baralho.length; index++) {
+                const carta_atual = lista_baralho[index];
+
+                if (carta_atual.indice == sorteador) {
+                    pontos_jogador += carta_atual.pontos;
+                    div_mensagem.innerHTML += `<br> Quero mais uma carta! <br> (${pontos_jogador} pontos) - ${carta_atual.valor} de ${carta_atual.naipe}`;
+                }
+            }
+            if (pontos_jogador == 7.5) {
+                texto += `<br>SETE E MEIO! <br><br> Banca: <br><br> O jogador venceu com 7.5 pontos!`;
+            }
+            if (pontos_jogador > 7.5) {
+                texto += `<br>JOGADOR ESTOROU!<br><br>Banca:<br><br>A banca venceu com 0 pontos!`;
+            }
+            div_mensagem.innerHTML += `${texto}`;
+        }
+    }
+
+    function passar() {
+        div_mensagem.innerHTML += `<br><br>Banca:`;
+        continuar()
+    }
+
+    function continuar() {
+        var sorteador = Number(Math.random() * lista_baralho.length + 1).toFixed(0);
+
+        for (let index = 0; index < lista_baralho.length; index++) {
+            const carta_atual = lista_baralho[index];
+
+            if (carta_atual.indice == sorteador) {
+                var pontos = 0;
+                pontos += carta_atual.pontos;
+                pontos_banca += pontos;
+                div_mensagem.innerHTML += `<br> (${pontos_banca} pontos) - ${carta_atual.valor} de ${carta_atual.naipe}`;
+            }
+        }
+        if (pontos_banca == 7.5) {
+            div_mensagem.innerHTML += `<br>SETE E MEIO! <br><br> O banca venceu com 7.5 pontos!`;
+        }
+        if (pontos_banca > 7.5) {
+            div_mensagem.innerHTML += `<br>BANCA ESTOROU!<br><br>O jogador venceu com ${pontos_jogador} pontos!`;
+        }
+        if (pontos_banca > pontos_jogador && pontos_banca < 7.5) {
+            div_mensagem.innerHTML += `<br><br>A banca venceu com ${pontos_banca} pontos!`;
+        }
+        if (pontos_banca <= pontos_jogador) {
+            continuar();
+        }
     }
 
 </script>
