@@ -4,15 +4,75 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sete e Meio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #tela1, #tela2 {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button {
+            background-color: #0dbb07;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.4s;
+        }
+        button:not(:disabled):hover {
+            background-color: #007a10;
+            color: white;
+        }
+        button:disabled {
+            cursor: not-allowed;
+        }
+        #div_mensagem {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            text-align: left;
+        }
+        #btn-jogar_novamente {
+            display: flex;
+            justify-content: center;
+            background-color: #0dbb07;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.4s;
+        }
+        #btn-jogar_novamente:hover {
+            background-color: #007a10;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <div id="tela1" style="display: block">
         <button onclick="jogar()">Jogar Sete e Meio</button>
     </div>
     <div id="tela2" style="display: none">
-        <button onclick="pedir()">Pedir Outra Carta</button>
-        <button onclick="passar()">Passar Vez</button>
-        <br />
+        <button id="btn-pedir" onclick="pedir()">Pedir Outra Carta</button>
+        <button id="btn-passar" onclick="passar()">Passar Vez</button>
+        <br>
         <div id="div_mensagem"></div>
     </div>
 </body>
@@ -61,20 +121,15 @@
         { valor: "Q", naipe: "paus", indice: "39", pontos: 0.5 },
         { valor: "K", naipe: "paus", indice: "40", pontos: 0.5 },
     ];
-
     var pontos_jogador = 0;
     var pontos_banca = 0;
     var texto = "";
-
     function jogar() {
         tela1.style.display = "none";
         tela2.style.display = "block";
-
         var sorteador = Number(Math.random() * lista_baralho.length + 1).toFixed(0);
-
         for (let index = 0; index < lista_baralho.length; index++) {
             const carta_atual = lista_baralho[index];
-
             if (carta_atual.indice == sorteador) {
                 var pontos = 0;
                 pontos += carta_atual.pontos;
@@ -83,37 +138,33 @@
             }
         }
     }
-
     function pedir() {
         if (pontos_jogador < 7.5) {
             var sorteador = Number(Math.random() * lista_baralho.length + 1).toFixed(0);
-
             for (let index = 0; index < lista_baralho.length; index++) {
                 const carta_atual = lista_baralho[index];
-
                 if (carta_atual.indice == sorteador) {
                     pontos_jogador += carta_atual.pontos;
                     div_mensagem.innerHTML += `<br> Quero mais uma carta! <br> (${pontos_jogador} pontos) - ${carta_atual.valor} de ${carta_atual.naipe}`;
                 }
             }
             if (pontos_jogador == 7.5) {
-                texto += `<br>SETE E MEIO! <br><br> Banca: <br><br> O jogador venceu com 7.5 pontos!`;
+                texto += `<br>SETE E MEIO! <br><br> Banca: <br><br> O jogador venceu com 7.5 pontos!<br><span id="btn-jogar_novamente" onclick="location.reload()">Jogar Novamente</span>`;
+                disableButtons()
             }
             if (pontos_jogador > 7.5) {
-                texto += `<br>JOGADOR ESTOROU!<br><br>Banca:<br><br>A banca venceu com 0 pontos!`;
+                texto += `<br>JOGADOR ESTOROU!<br><br>Banca:<br><br>A banca venceu com 0 pontos!<br><span id="btn-jogar_novamente" onclick="location.reload()">Jogar Novamente</span>`;
+                disableButtons()
             }
             div_mensagem.innerHTML += `${texto}`;
         }
     }
-
     function passar() {
         div_mensagem.innerHTML += `<br><br>Banca:`;
         continuar()
     }
-
     function continuar() {
         var sorteador = Number(Math.random() * lista_baralho.length + 1).toFixed(0);
-
         for (let index = 0; index < lista_baralho.length; index++) {
             const carta_atual = lista_baralho[index];
 
@@ -125,17 +176,23 @@
             }
         }
         if (pontos_banca == 7.5) {
-            div_mensagem.innerHTML += `<br>SETE E MEIO! <br><br> O banca venceu com 7.5 pontos!`;
+            div_mensagem.innerHTML += `<br>SETE E MEIO! <br><br> O banca venceu com 7.5 pontos!<br><span id="btn-jogar_novamente" onclick="location.reload()">Jogar Novamente</span>`;
+            disableButtons()
         }
         if (pontos_banca > 7.5) {
-            div_mensagem.innerHTML += `<br>BANCA ESTOROU!<br><br>O jogador venceu com ${pontos_jogador} pontos!`;
+            div_mensagem.innerHTML += `<br>BANCA ESTOROU!<br><br>O jogador venceu com ${pontos_jogador} pontos!<br><span id="btn-jogar_novamente" onclick="location.reload()">Jogar Novamente</span>`;
+            disableButtons()
         }
         if (pontos_banca > pontos_jogador && pontos_banca < 7.5) {
-            div_mensagem.innerHTML += `<br><br>A banca venceu com ${pontos_banca} pontos!`;
+            div_mensagem.innerHTML += `<br><br>A banca venceu com ${pontos_banca} pontos!<br><span id="btn-jogar_novamente" onclick="location.reload()">Jogar Novamente</span>`;
+            disableButtons()
         }
         if (pontos_banca <= pontos_jogador) {
             continuar();
         }
     }
-
+    function disableButtons() {
+        document.getElementById("btn-pedir").disabled = true;
+        document.getElementById("btn-passar").disabled = true;
+    }
 </script>
